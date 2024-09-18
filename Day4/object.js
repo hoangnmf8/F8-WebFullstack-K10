@@ -111,7 +111,6 @@ for (let key in Object.keys(categories)) {
 		product.categoryName = categories[key].name;
 	}
 }
-console.log(product);
 
 const whiteList = Object.freeze({});
 
