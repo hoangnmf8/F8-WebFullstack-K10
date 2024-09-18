@@ -82,7 +82,7 @@ for (value of students1) {
 	console.log(value);
 }
 
-const employes = [
+const employees = [
 	{ name: "Hoang", age: 18, address: "BG" },
 	{ name: "Dong", age: 24, address: "BG" },
 	{ name: "Xuan", age: 12, address: "BG" },
@@ -98,9 +98,9 @@ const employes = [
  * Chạy hết vòng lặp thì maxAge chính là nhân viên lớn tuổi nhất.
  */
 
-let max = employes[0];
+let max = es[0];
 
-for (let i = 0; i < employes.length; i++) {
+for (let i = 0; i < employees.length; i++) {
 	// Nếu nhân viên thứ i có tuổi lớn hơn max thì max = employes[i]
 	if (employes[i].age > max.age) {
 		max = employes[i];
