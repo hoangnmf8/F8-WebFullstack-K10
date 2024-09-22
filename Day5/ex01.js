@@ -102,8 +102,8 @@ let max = es[0];
 
 for (let i = 0; i < employees.length; i++) {
 	// Nếu nhân viên thứ i có tuổi lớn hơn max thì max = employes[i]
-	if (employes[i].age > max.age) {
-		max = employes[i];
+	if (employees[i].age > max.age) {
+		max = employees[i];
 	}
 }
 
