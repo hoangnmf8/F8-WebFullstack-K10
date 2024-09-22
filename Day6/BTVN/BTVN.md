@@ -1,6 +1,6 @@
 ## Bài 1: Tìm sản phẩm theo tên.
 
-Từ màn hình nhập vào cửa sổ prompt chuỗi bất kỳ. Viết chương trình in ra màn hình các sản phẩm có chứa chuỗi vừa nhập theo tên sản phẩm (Không kể chữ in hoa hay chữ in thường).
+Từ màn hình nhập vào cửa sổ prompt chuỗi bất kỳ. Viết chương trình in ra màn hình các sản phẩm có tên chứa chuỗi vừa nhập (Không kể chữ in hoa hay chữ in thường).
 
 Cho trước mảng sản phẩm:
 
@@ -16,7 +16,7 @@ const products = [
 
 ## Bài 2: Làm sạch dữ liệu.
 
-- Có một Raw data (dữ liệu thô) về users chưa được làm sạch, bạn cần duyệt qua mảng dữ liệu này với tên không được mang giá trị falsy (0, '', null, undefined, NaN) và tuổi không được mang giá trị falsy + không được là số âm.
+- Có một raw data (dữ liệu thô) về users chưa được làm sạch, bạn cần duyệt qua mảng dữ liệu này với tên không được mang giá trị `falsy` (0, '', null, undefined, NaN) và tuổi không được mang giá trị `falsy` + không được là số âm.
 - Vi phạm một trong 2 điều kiện trên thì sẽ bị loại khỏi mảng gốc và thêm vào một mảng mới với tên là `invalidData`.
 
 ```javascript
@@ -48,6 +48,8 @@ const invalidData = [
 
 Viết hàm `calculateOrderTotal` nhận vào một mảng các đơn hàng, mỗi đơn hàng bao gồm `id`, `name`, `quantity`, `price`. Hàm trả về tổng giá trị của tất cả các đơn hàng.
 
+**Lưu ý: Không dùng reduce**
+
 ```javascript
 const orders = [
 	{ id: "1", name: "A", quantity: 2, price: 100 },
@@ -55,5 +57,5 @@ const orders = [
 	{ id: "3", name: "C", quantity: 3, price: 300 },
 ];
 
-// Output: 1100
+// Output: 1300
 ```

@@ -1,18 +1,20 @@
 ## Cách để lấy các phương thức mảng
 
+- Thông qua prototype của Array. -Done
+
 ## Nhóm các phương thức xử lý mảng
 
-- slice()
+- slice() -Done
   - Bài tập nhỏ: Tìm kiếm và cập nhật phần tử của mảng có đặc trưng nào đó.
-- splice()
-- flat()
+- splice() -Done
+- flat() -Done
 
 ## Nhóm các phương thức tìm kiếm và duyệt mảng
 
-- forEach()
-- find(), findLast()
-- findIndex(), findLastIndex()
-- filter()
+- forEach() -Done
+- find(), findLast() -Done
+- findIndex(), findLastIndex() -Done
+- filter() -Done
 
 ## Các bài tập:
 
