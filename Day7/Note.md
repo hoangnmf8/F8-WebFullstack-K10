@@ -3,8 +3,9 @@
 - some()
 - every()
 - map()
-- sort()
 - reverse()
+
+- sort()
 - reduce()
 
 ## Mảng với ES6
