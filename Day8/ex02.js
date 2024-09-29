@@ -1,7 +1,7 @@
 /**
  * Spread Operator (Toán tử spread)
  * - Dùng để nối, gộp mảng hoặc Object.
- * - Dùng để copy mảng hoặc Objecj (chỉ sao chép nông).
+ * - Dùng để copy mảng hoặc Object (chỉ sao chép nông).
  */
 
 const students1 = ["Nam", "Huy", "Long", ["Đan"]];
@@ -14,7 +14,7 @@ console.log(students3);
 const students4 = [...students2, "Hoang", ...students1];
 console.log(students4);
 
-// Copy mảng (Shadow Copy)
+// Copy mảng (Shallow Copy)
 const students1Copy = [...students1];
 students1Copy.push("Donal Trump");
 console.log(students1Copy);
