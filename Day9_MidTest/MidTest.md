@@ -35,7 +35,7 @@ console.log(11); // "Không chia hết"
 
 Hàm `highlightKeyword(content, keyword)` nhận vào 2 tham số `content` và `keyword` và trả về nội dung với tất cả các `keyword` được bôi đậm bằng cách thêm thẻ `<strong>` vào trước và sau `keyword`.
 
-- Thêm được thẻ `strong` vào trước và sau `keyword`. (1.5đ)
+- Thêm được thẻ `strong` vào trước và sau `keyword`. (1đ)
 - Nếu không tìm được `keyword` trong `content` thì trả về `content` ban đầu. (0.5đ)
 - Không phân biệt chữ hoa, chữ thường. (0.5đ)
 - Không `highight` hết các `keyword` trong content. (0.5đ)
@@ -48,7 +48,7 @@ highlightKeyword("Học lập trình tại F8 rất thú vị, bạn có biết 
 // Kết quả kỳ vọng: "Học lập trình tại F8 rất <strong>thú vị</strong>, bạn có biết điều gì <strong>THÚ VỊ</strong> hơn không?"
 ```
 
-## Bài 4 (2 điểm): Đưa thông tin dạng bảng danh sách sản phẩm ra màn hình.
+## Bài 4 (2 điểm): Đưa thông tin dạng bảng sản phẩm ra màn hình.
 
 - Yêu cầu đầy đủ các thông tin: `id, name, price, brand`. (Thiếu một trong các thông tin trên sẽ bị trừ 0.5đ)
 - Danh sách hiển thị phải là dạng bảng HTML. (0.5đ)
