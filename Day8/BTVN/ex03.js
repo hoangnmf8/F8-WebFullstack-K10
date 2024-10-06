@@ -5,15 +5,18 @@ Viết hàm `countDown(time)` nhận vào một tham số `time` là một số 
  */
 
 function countDown(time) {
-	let interval = setInterval(() => {
+	if (typeof time !== "number" || Number.isNaN(time) || time <= 0) {
+		console.log("Invalid");
+		return;
+	}
+	const counter = setInterval(() => {
 		console.log(time);
 		time--;
 		if (time < 0) {
-			clearInterval(interval);
+			clearInterval(counter);
 		}
-	}, 1);
+	}, 1000);
 }
 
-const time = prompt("Enter time in seconds: ");
-
+let time = +prompt("Mời nhập số giây cần đếm ngược:");
 countDown(time);
