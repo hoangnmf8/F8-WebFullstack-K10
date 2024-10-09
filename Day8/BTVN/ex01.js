@@ -5,14 +5,14 @@ Viết hàm `calculateAge(birthday)` nhận vào một tham số `birthday` là 
  */
 
 function calculateAge(birthday) {
-	let [day, month, year] = birthday.split("/");
-	let today = new Date();
-	let birth = new Date(year, month - 1, day);
-	let diff = today - birth;
-	if (diff < 0) {
-		return "Invalid";
-	}
-	return Math.floor(diff / (1000 * 60 * 60 * 24));
+  let [day, month, year] = birthday.split('/')
+  let today = new Date()
+  let birth = new Date(year, month - 1, day)
+  let diff = today - birth
+  if (diff < 0) {
+    return 'Invalid'
+  }
+  return Math.floor(diff / (1000 * 60 * 60 * 24))
 }
 
-console.log(calculateAge("1/10/2024"));
+console.log(calculateAge('1/10/2024'))

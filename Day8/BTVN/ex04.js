@@ -6,10 +6,10 @@ Viết hàm `countDownToNewYear()` để đếm số ngày còn lại đến t�
  */
 
 function countDownToNewYear() {
-	let today = new Date();
-	let newYear = new Date(today.getFullYear() + 1, 0, 1);
-	let diff = newYear - today;
-	return Math.floor(diff / (1000 * 60 * 60 * 24));
+  let today = new Date()
+  let newYear = new Date(today.getFullYear() + 1, 0, 1)
+  let diff = newYear - today
+  return Math.floor(diff / (1000 * 60 * 60 * 24))
 }
 
-console.log(countDownToNewYear());
+console.log(countDownToNewYear())

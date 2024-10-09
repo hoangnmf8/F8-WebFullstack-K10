@@ -64,36 +64,36 @@ const products = [
  */
 
 const products = [
-	{
-		id: 1,
-		name: "Iphone 12",
-		price: 1000,
-		brand: "Apple",
-	},
-	{
-		id: 2,
-		name: "Galaxy S21",
-		price: 900,
-		brand: "Samsung",
-	},
-	{
-		id: 3,
-		name: "Xperia 1",
-		price: 800,
-		brand: "Sony",
-	},
-];
+  {
+    id: 1,
+    name: 'Iphone 12',
+    price: 1000,
+    brand: 'Apple',
+  },
+  {
+    id: 2,
+    name: 'Galaxy S21',
+    price: 900,
+    brand: 'Samsung',
+  },
+  {
+    id: 3,
+    name: 'Xperia 1',
+    price: 800,
+    brand: 'Sony',
+  },
+]
 
 const result = products
-	.map((item) => {
-		return `<tr>
+  .map((item) => {
+    return `<tr>
 					<td>${item.id}</td>
 					<td>${item.name}</td>
 					<td>${item.price}</td>
 					<td>${item.brand}</td>
-				</tr>`;
-	})
-	.join("");
+				</tr>`
+  })
+  .join('')
 
 const content = `
   <table>
@@ -109,6 +109,6 @@ const content = `
       ${result}
     </tbody>
   </table>
-`;
+`
 
-document.write(content);
+document.write(content)

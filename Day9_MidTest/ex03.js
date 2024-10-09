@@ -9,15 +9,10 @@
 // highlightKeyword("Học lập trình tại F8 rất thú vị, bạn có biết điều gì THÚ VỊ hơn không?", "thú vị");
 // Kết quả kỳ vọng: "Học lập trình tại F8 rất <strong>thú vị</strong>, bạn có biết điều gì <strong>THÚ VỊ</strong> hơn không?"
 function highlightKeyword(content, keyword) {
-  if (typeof content !== "string" || typeof keyword !== "string") {
-    return content;
+  if (typeof content !== 'string' || typeof keyword !== 'string') {
+    return content
   }
-  const regex = new RegExp(keyword, "gi");
-  return content.replace(regex, "<strong>$&</strong>");
+  const regex = new RegExp(keyword, 'gi')
+  return content.replace(regex, '<strong>$&</strong>')
 }
-console.log(
-  highlightKeyword(
-    "Học lập trình tại F8 rất thú vị, bạn có biết điều gì THÚ VỊ hơn không?",
-    "thú vị"
-  )
-);
+console.log(highlightKeyword('Học lập trình tại F8 rất thú vị, bạn có biết điều gì THÚ VỊ hơn không?', 'thú vị'))

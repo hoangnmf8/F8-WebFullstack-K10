@@ -14,10 +14,10 @@
 // console.log(myStudents[3]);
 
 const product = {
-	name: "Iphone 16",
-	price: 2000,
-	color: "violet",
-};
+  name: 'Iphone 16',
+  price: 2000,
+  color: 'violet',
+}
 
 // console.log(typeof product.ram);
 // const valueUndefined = undefined;
@@ -28,21 +28,21 @@ const product = {
  *
  */
 
-let myArray = [];
+let myArray = []
 
-let myObject = {};
+let myObject = {}
 
-let myVariable = null;
-console.log(typeof myVariable);
+let myVariable = null
+console.log(typeof myVariable)
 // myVariable.age = 18;
 
-console.log(myVariable === null);
+console.log(myVariable === null)
 
-const productList = null;
+const productList = null
 
-console.log(productList ?? "Danh sách sản phẩm trống");
-console.log(productList && "Danh sách sản phẩm trống");
-console.log(productList || "Danh sách sản phẩm trống");
+console.log(productList ?? 'Danh sách sản phẩm trống')
+console.log(productList && 'Danh sách sản phẩm trống')
+console.log(productList || 'Danh sách sản phẩm trống')
 
 // &&, ||: tính toán dựa trên các giá trị falsy, truthy:
 /**
@@ -59,14 +59,14 @@ console.log(productList || "Danh sách sản phẩm trống");
  */
 
 const userInfor = {
-	email: "hoangnm@gmail.com",
-	password: "1234567890",
-};
+  email: 'hoangnm@gmail.com',
+  password: '1234567890',
+}
 
 // cach 1
-userInfor.password = undefined;
+userInfor.password = undefined
 
 // Cach 2:
-delete userInfor.password;
+delete userInfor.password
 
-console.log(userInfor);
+console.log(userInfor)

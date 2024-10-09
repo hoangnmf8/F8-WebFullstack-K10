@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+
+    <style>
+      .button {
+        background-color: red;
+      }
+      .dark {
+        background-color: #111;
+        color: #eee;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="btn btn01" onclick="myFunc()">Click me</button>
+
+    <button onclick="changeTheme()">Change Theme</button>
+
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem atque aperiam earum id ut pariatur mollitia
+      delectus quasi! Enim consequuntur harum facilis perferendis fuga, quisquam, neque modi, nam debitis unde veritatis
+      aliquam quaerat distinctio accusamus non adipisci cupiditate molestiae quis ut culpa rerum consequatur assumenda
+      veniam eaque? Porro fugit ipsum enim! Vel, eligendi cumque. Iste id ab error, necessitatibus, blanditiis magni
+      minima eligendi velit consequatur excepturi reprehenderit accusamus eaque sed tempora alias! Sunt labore quisquam
+      doloremque id, ad sint accusantium sequi nemo ipsa nisi beatae maxime repellendus quaerat itaque minus dicta
+      dolorum inventore incidunt officia. Facilis amet non earum molestiae!
+    </p>
+    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia, reprehenderit!</p>
+  </body>
+  <script>
+    const btnElement = document.querySelector('button.btn.btn01')
+    console.log(btnElement.classList)
+
+    // btnElement.className = 'newBtn'
+    // console.log(btnElement)
+
+    btnElement.classList.add('btnNew1', 'btnNew2')
+    btnElement.classList.remove('btnNew1', 'btn01')
+    console.log(btnElement)
+    btnElement.classList.replace('btn', 'button')
+
+    function myFunc() {
+      btnElement.classList.toggle('button')
+    }
+
+    // TODO: Sử dụng classList để làm nút bấm có chức năng dark mode.
+  </script>
+
+  <script src="./ex02.js"></script>
+</html>

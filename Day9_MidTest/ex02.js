@@ -8,16 +8,16 @@ Hàm `checkNumber(n)` nhận vào số n thực hiện yêu cầu sau:
  */
 
 function checkNumber(n) {
-	if (typeof n !== "number" || Number.isNaN(n)) return "Invalid";
-	if (n % 15 === 0) return "Chia hết cho cả 3 số 3, 5 và 15";
-	if (n % 3 === 0) return "Chia hết cho 3";
-	if (n % 5 === 0) return "Chia hết cho 5";
-	return "Không chia hết";
+  if (typeof n !== 'number' || Number.isNaN(n)) return 'Invalid'
+  if (n % 15 === 0) return 'Chia hết cho cả 3 số 3, 5 và 15'
+  if (n % 3 === 0) return 'Chia hết cho 3'
+  if (n % 5 === 0) return 'Chia hết cho 5'
+  return 'Không chia hết'
 }
 
-console.log(checkNumber("15"));
-console.log(checkNumber(NaN));
-console.log(checkNumber(9));
-console.log(checkNumber(-30));
-console.log(checkNumber(20));
-console.log(checkNumber(11));
+console.log(checkNumber('15'))
+console.log(checkNumber(NaN))
+console.log(checkNumber(9))
+console.log(checkNumber(-30))
+console.log(checkNumber(20))
+console.log(checkNumber(11))

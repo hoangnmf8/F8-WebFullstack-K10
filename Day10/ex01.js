@@ -37,8 +37,6 @@
  * - Trả về phần tử HTML đầu tiên có id được truyền vào.
  */
 
-
-
 // console.log(document.getElementsByClassName("section-3"))
 
 /**
@@ -50,7 +48,7 @@
  * querySelector("selectorName")
  * - Trả về phần tử đầu tiên thoả mãn "selectorName".
  * - Nếu không tìm được thì trả về "null"
- * 
+ *
  * querySelectorAll("selectorName")
  * - Luôn trả về 1 NodeList (danh sách các node ở trong DOM).
  */
@@ -76,7 +74,7 @@
 // odd: lẻ
 // even: chẵn
 
-let oddElement = document.querySelectorAll("div > p:nth-child(odd)")
+let oddElement = document.querySelectorAll('div > p:nth-child(odd)')
 
 // for(let i = 0; i < oddElement.length; i++) {
 //   console.log(`Phần tử ${i}: `, oddElement[i])
@@ -86,7 +84,7 @@ let oddElement = document.querySelectorAll("div > p:nth-child(odd)")
 //   console.log(`phần tử ${index} là: ${item[index]}`)
 // })
 
-console.log(Array.isArray(oddElement)) 
+console.log(Array.isArray(oddElement))
 console.log(typeof oddElement)
 
 /**
@@ -94,11 +92,8 @@ console.log(typeof oddElement)
  */
 
 /**
- * 
+ *
  */
 
-let pElements = document.getElementsByTagName("p")
+let pElements = document.getElementsByTagName('p')
 console.log(pElements)
-
-
-

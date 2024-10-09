@@ -34,39 +34,39 @@
  */
 
 const products = [
-	{
-		id: 1,
-		name: "Iphone 16 promax",
-		description: "Mo ta",
-		thumbnail:
-			"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png",
-		price: 3000,
-	},
-	{
-		id: 2,
-		name: "Iphone 15 promax",
-		description: "Mo ta",
-		thumbnail:
-			"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png",
-		price: 2000,
-	},
-	{
-		id: 3,
-		name: "Iphone 14 promax",
-		description: "Mo ta",
-		thumbnail:
-			"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png",
-		price: 1800,
-	},
-	{
-		id: 4,
-		name: "Iphone 13 promax",
-		description: "Mo ta",
-		thumbnail:
-			"https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png",
-		price: 1500,
-	},
-];
+  {
+    id: 1,
+    name: 'Iphone 16 promax',
+    description: 'Mo ta',
+    thumbnail:
+      'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png',
+    price: 3000,
+  },
+  {
+    id: 2,
+    name: 'Iphone 15 promax',
+    description: 'Mo ta',
+    thumbnail:
+      'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png',
+    price: 2000,
+  },
+  {
+    id: 3,
+    name: 'Iphone 14 promax',
+    description: 'Mo ta',
+    thumbnail:
+      'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png',
+    price: 1800,
+  },
+  {
+    id: 4,
+    name: 'Iphone 13 promax',
+    description: 'Mo ta',
+    thumbnail:
+      'https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/i/p/iphone-15-pro-max_3.png',
+    price: 1500,
+  },
+]
 
 /**
  *<div class="product-card">
@@ -76,19 +76,19 @@ const products = [
 	</div>
  */
 const content = products
-	.map((item) => {
-		let itemContent = `
+  .map((item) => {
+    let itemContent = `
   <div class="product-card">
       <img src="${item.thumbnail}" width="200" />
 			<h2>${item.name}</h2>
 			<p>Description: ${item.description}</p>
 			<p class="price">Price: ${item.price}</p>
 	</div>
-  `;
-		return itemContent;
-	})
-	.join("");
+  `
+    return itemContent
+  })
+  .join('')
 
-console.log(content);
+console.log(content)
 
-document.write(content);
+document.write(content)

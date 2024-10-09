@@ -5,10 +5,10 @@
  * - Trả về phần tử bị xoá
  */
 
-const arr = ["Xuan", "Ha", "Thu", "Dong"];
+const arr = ['Xuan', 'Ha', 'Thu', 'Dong']
 
-console.log(arr.pop());
-console.log(arr);
+console.log(arr.pop())
+console.log(arr)
 
 /**
  * push()
@@ -17,8 +17,8 @@ console.log(arr);
  * - Trả về độ dài mới của mảng
  */
 
-console.log(arr.push("An", "Huy"));
-console.log(arr);
+console.log(arr.push('An', 'Huy'))
+console.log(arr)
 
 /**
  * unshift()
@@ -27,8 +27,8 @@ console.log(arr);
  * - Trả về độ dài mới của mảng.
  */
 
-console.log(arr.unshift("Long"));
-console.log(arr);
+console.log(arr.unshift('Long'))
+console.log(arr)
 
 /**
  * shift()
@@ -37,5 +37,5 @@ console.log(arr);
  * - Trả về phần tử bị xoá
  */
 
-console.log(arr.shift());
-console.log(arr);
+console.log(arr.shift())
+console.log(arr)

@@ -9,7 +9,7 @@
  * 4. Cấu trúc điều khiển rẽ nhánh
  */
 
-console.log("File nay hoc ve comment trong js");
+console.log('File nay hoc ve comment trong js')
 
 /**
  * * Đây là một comment mang thông tin.

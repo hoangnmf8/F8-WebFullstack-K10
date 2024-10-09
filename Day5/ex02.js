@@ -27,7 +27,7 @@
 // str = "<p>" + str + "</p>";
 // console.log(str);
 
-let username = "nguyEn mINH hOAng";
+let username = 'nguyEn mINH hOAng'
 // Output: Nguyen Minh Hoang
 /**
  * Bước 1: Phân tách chuỗi thành một mảng, mỗi phần tử là 1 từ, phân tách bởi dấu cách.
@@ -36,16 +36,16 @@ let username = "nguyEn mINH hOAng";
  */
 
 function capitalizeName(str) {
-	// Bước 1: Phân tách chuỗi đầu vào thành mảng và tạo vòng lặp
-	const arr = str.split(" ");
-	for (index in arr) {
-		// Bước 2: Với mỗi phần tử arr[index], in hoa chữ cái đầu, in thường phần còn lại.
-		arr[index] = arr[index][0].toUpperCase() + arr[index].slice(1).toLowerCase();
-	}
-	console.log(arr);
+  // Bước 1: Phân tách chuỗi đầu vào thành mảng và tạo vòng lặp
+  const arr = str.split(' ')
+  for (index in arr) {
+    // Bước 2: Với mỗi phần tử arr[index], in hoa chữ cái đầu, in thường phần còn lại.
+    arr[index] = arr[index][0].toUpperCase() + arr[index].slice(1).toLowerCase()
+  }
+  console.log(arr)
 
-	// Bước 3: nối các phần tử của arr thành chuỗi và trả ra ngoài.
-	return arr.join(" ");
+  // Bước 3: nối các phần tử của arr thành chuỗi và trả ra ngoài.
+  return arr.join(' ')
 }
 
-console.log(capitalizeName(username));
+console.log(capitalizeName(username))

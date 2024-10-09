@@ -49,11 +49,11 @@
 // console.log(clear);
 
 // TODO: Dùng setInterval hiển thị ra cửa sổ console từ 1 đến 100, mỗi lần hiển thị cách nhau 1s.
-let i = 0;
+let i = 0
 const result3 = setInterval(() => {
-	if (i > 99) {
-		clearInterval(result3);
-	}
-	console.log(i++);
-	// Khi callback được gọi thì luôn thực hiện toàn bộ câu lệnh trong callback xong khi quay lại thì mới bị clear.
-}, 1);
+  if (i > 99) {
+    clearInterval(result3)
+  }
+  console.log(i++)
+  // Khi callback được gọi thì luôn thực hiện toàn bộ câu lệnh trong callback xong khi quay lại thì mới bị clear.
+}, 1)

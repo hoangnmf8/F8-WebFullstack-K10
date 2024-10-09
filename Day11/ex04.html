@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- Cách 1: viết trực tiếp sự kiện vào attribute html -->
+    <button onclick="console.log(`Hello!`); console.log(`hello lan 2`)">Click me</button>
+
+    <!-- <button onmouseover="console.log(`Mouse over!`)">Hover me</button>
+
+    <button ondblclick="console.log(`Double click!`)">Double click me</button>
+
+    <button onmousedown="console.log(`Mouse down!`)">Mouse down me</button>
+
+    <button onmouseup="console.log(`Mouse up!`)">Mouse up me</button> -->
+
+    <button id="btn">click me!</button>
+
+    <script>
+      const btnElement = document.getElementById('btn')
+
+      // btnElement.onclick = function () {
+      //   console.log('hello')
+      // }
+
+      // btnElement.onclick = function () {
+      //   console.log('xin chao!')
+      // }
+
+      // btnElement.onclick = function () {
+      //   console.log('xin chao lan 2!')
+      // }
+
+      // Cách 2: Sử dụng javascript để gắn sự kiện.
+
+      const myFunc = function () {
+        console.log('addEvent 1!')
+      }
+      // Cách 3: Sử dụng addEventListener()
+      btnElement.addEventListener('click', myFunc)
+
+      // btnElement.addEventListener('click', function () {
+      //   console.log('addEvent 2!')
+      // })
+
+      btnElement.removeEventListener('click', myFunc)
+    </script>
+  </body>
+</html>

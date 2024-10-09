@@ -5,9 +5,9 @@ Viết hàm `showTime()` để hiển thị thời gian hiện tại sau mỗi m
  */
 
 function showTime() {
-	setInterval(() => {
-		console.log(new Date());
-	}, 1000);
+  setInterval(() => {
+    console.log(new Date())
+  }, 1000)
 }
 
-showTime();
+showTime()

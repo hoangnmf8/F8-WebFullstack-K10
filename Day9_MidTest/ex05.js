@@ -89,61 +89,61 @@ const categories = [
 */
 
 const categories = [
-	{
-		id: 1,
-		name: "Chuyên mục 1",
-	},
-	{
-		id: 2,
-		name: "Chuyên mục 2",
-		children: [
-			{
-				id: 4,
-				name: "Chuyên mục 2.1",
-			},
-			{
-				id: 5,
-				name: "Chuyên mục 2.2",
-				children: [
-					{
-						id: 10,
-						name: "Chuyên mục 2.2.1",
-					},
-					{
-						id: 11,
-						name: "Chuyên mục 2.2.2",
-					},
-					{
-						id: 12,
-						name: "Chuyên mục 2.2.3",
-					},
-				],
-			},
-			{
-				id: 6,
-				name: "Chuyên mục 2.3",
-			},
-		],
-	},
-	{
-		id: 3,
-		name: "Chuyên mục 3",
-		children: [
-			{
-				id: 7,
-				name: "Chuyên mục 3.1",
-			},
-			{
-				id: 8,
-				name: "Chuyên mục 3.2",
-			},
-			{
-				id: 9,
-				name: "Chuyên mục 3.3",
-			},
-		],
-	},
-];
+  {
+    id: 1,
+    name: 'Chuyên mục 1',
+  },
+  {
+    id: 2,
+    name: 'Chuyên mục 2',
+    children: [
+      {
+        id: 4,
+        name: 'Chuyên mục 2.1',
+      },
+      {
+        id: 5,
+        name: 'Chuyên mục 2.2',
+        children: [
+          {
+            id: 10,
+            name: 'Chuyên mục 2.2.1',
+          },
+          {
+            id: 11,
+            name: 'Chuyên mục 2.2.2',
+          },
+          {
+            id: 12,
+            name: 'Chuyên mục 2.2.3',
+          },
+        ],
+      },
+      {
+        id: 6,
+        name: 'Chuyên mục 2.3',
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: 'Chuyên mục 3',
+    children: [
+      {
+        id: 7,
+        name: 'Chuyên mục 3.1',
+      },
+      {
+        id: 8,
+        name: 'Chuyên mục 3.2',
+      },
+      {
+        id: 9,
+        name: 'Chuyên mục 3.3',
+      },
+    ],
+  },
+]
 
 /**
  * Bước 1: Làm phẵng dữ liệu và thêm level cho các chuyên mục.
@@ -151,47 +151,47 @@ const categories = [
  * Bước 3: Xử lý chuỗi
  */
 
-const queue = categories.map((item) => ({ ...item, level: 0 }));
+const queue = categories.map((item) => ({ ...item, level: 0 }))
 
-let result = [];
+let result = []
 while (queue.length > 0) {
-	let item = queue.shift();
-	result.push(item);
-	if (item.children) {
-		const childrenArr = item.children.map((child) => {
-			console.log(item);
-			return {
-				...child,
-				level: item.level + 1,
-			};
-		});
-		queue.unshift(...childrenArr);
-	}
+  let item = queue.shift()
+  result.push(item)
+  if (item.children) {
+    const childrenArr = item.children.map((child) => {
+      console.log(item)
+      return {
+        ...child,
+        level: item.level + 1,
+      }
+    })
+    queue.unshift(...childrenArr)
+  }
 }
 
 let content = result.map((item) => {
-	// Cách 1:
-	// for (let i = 0; i < item.level; i++) {
-	// 	item.name = "--" + item.name;
-	// }
+  // Cách 1:
+  // for (let i = 0; i < item.level; i++) {
+  // 	item.name = "--" + item.name;
+  // }
 
-	// Cách 2:
-	let maker = "";
+  // Cách 2:
+  let maker = ''
 
-	maker = maker.padStart(item.level * 2, "--");
-	console.log(maker);
+  maker = maker.padStart(item.level * 2, '--')
+  console.log(maker)
 
-	if (maker !== "") {
-		item.name = maker + " " + item.name;
-	}
+  if (maker !== '') {
+    item.name = maker + ' ' + item.name
+  }
 
-	return item;
-});
+  return item
+})
 
 content = `<select>${content
-	.map((item) => {
-		return `<option value="${item.id}">${item.name}</option>`;
-	})
-	.join("")}</select>`;
+  .map((item) => {
+    return `<option value="${item.id}">${item.name}</option>`
+  })
+  .join('')}</select>`
 
-document.write(content);
+document.write(content)

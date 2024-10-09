@@ -9,16 +9,16 @@ Hàm `taxiFare(km)` nhận vào số km và trả về số tiền phải trả 
  */
 
 function taxiFare(km) {
-	if (typeof km !== "number" || Number.isNaN(km) || km < 0) return "Invalid";
+  if (typeof km !== 'number' || Number.isNaN(km) || km < 0) return 'Invalid'
 
-	if (km <= 1) return 5000;
-	if (km <= 30) return 5000 + (km - 1) * 4000;
-	return 5000 + 29 * 4000 + (km - 30) * 3000;
+  if (km <= 1) return 5000
+  if (km <= 30) return 5000 + (km - 1) * 4000
+  return 5000 + 29 * 4000 + (km - 30) * 3000
 }
 
-console.log(taxiFare(0.5));
-console.log(taxiFare(2));
-console.log(taxiFare(29));
-console.log(taxiFare(40));
-console.log(taxiFare(-1));
-console.log(taxiFare(NaN));
+console.log(taxiFare(0.5))
+console.log(taxiFare(2))
+console.log(taxiFare(29))
+console.log(taxiFare(40))
+console.log(taxiFare(-1))
+console.log(taxiFare(NaN))

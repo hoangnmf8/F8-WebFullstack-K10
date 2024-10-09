@@ -64,31 +64,31 @@
 // const arr1 = [1, 2, 3];
 // const arr2 = [1, 2, 3];
 // console.log(arr1 === arr2);
-const students1 = ["Hoang", "Long", "Duy"];
+const students1 = ['Hoang', 'Long', 'Duy']
 
 // Duyệt qua từng phần tử của mảng
 // for
 for (let i = 0; i < students1.length; i++) {
-	console.log(students1[i]);
+  console.log(students1[i])
 }
 
 // For...in
 for (index in students1) {
-	console.log(`phần tử ở vị trí ${index} có giá trị là: ${students1[index]}`);
+  console.log(`phần tử ở vị trí ${index} có giá trị là: ${students1[index]}`)
 }
 
 // For...of
 for (value of students1) {
-	console.log(value);
+  console.log(value)
 }
 
 const employees = [
-	{ name: "Hoang", age: 18, address: "BG" },
-	{ name: "Dong", age: 24, address: "BG" },
-	{ name: "Xuan", age: 12, address: "BG" },
-	{ name: "Duy", age: 28, address: "ND" },
-	{ name: "Huy", age: 32, address: "LS" },
-];
+  { name: 'Hoang', age: 18, address: 'BG' },
+  { name: 'Dong', age: 24, address: 'BG' },
+  { name: 'Xuan', age: 12, address: 'BG' },
+  { name: 'Duy', age: 28, address: 'ND' },
+  { name: 'Huy', age: 32, address: 'LS' },
+]
 
 // Tìm ra nhân viên lớn tuổi nhất, nếu 2 nhân viên lớn tuổi nhất có số tuổi bằng nhau thì lấy người đầu tiên tìm được.
 
@@ -98,13 +98,13 @@ const employees = [
  * Chạy hết vòng lặp thì maxAge chính là nhân viên lớn tuổi nhất.
  */
 
-let max = es[0];
+let max = es[0]
 
 for (let i = 0; i < employees.length; i++) {
-	// Nếu nhân viên thứ i có tuổi lớn hơn max thì max = employes[i]
-	if (employees[i].age > max.age) {
-		max = employees[i];
-	}
+  // Nếu nhân viên thứ i có tuổi lớn hơn max thì max = employes[i]
+  if (employees[i].age > max.age) {
+    max = employees[i]
+  }
 }
 
-console.log(max);
+console.log(max)

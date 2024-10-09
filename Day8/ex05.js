@@ -17,22 +17,22 @@
 // console.log(myObj2);
 
 const userInfor = {
-	email: "hoang@gmail.com",
-	password: "matkhaumanh",
-	hello() {
-		console.log("Xin chao ca lop!");
-	},
-	// Đây là 1 comment trong object
-};
+  email: 'hoang@gmail.com',
+  password: 'matkhaumanh',
+  hello() {
+    console.log('Xin chao ca lop!')
+  },
+  // Đây là 1 comment trong object
+}
 
-const myJSON = JSON.stringify(userInfor);
-console.log(myJSON);
+const myJSON = JSON.stringify(userInfor)
+console.log(myJSON)
 
-const arr = [1, 2, 3, 4];
+const arr = [1, 2, 3, 4]
 
-const newJSON = JSON.stringify(arr);
-console.log(newJSON);
-console.log(Array.isArray(JSON.parse(newJSON)));
+const newJSON = JSON.stringify(arr)
+console.log(newJSON)
+console.log(Array.isArray(JSON.parse(newJSON)))
 
 /**
  * Sai lầm thường gặp:

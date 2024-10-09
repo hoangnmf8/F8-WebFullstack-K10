@@ -16,17 +16,17 @@ const orders = [
  */
 
 const orders = [
-	{ id: "1", name: "A", quantity: 2, price: 100 },
-	{ id: "2", name: "B", quantity: 1, price: 200 },
-	{ id: "3", name: "C", quantity: 3, price: 300 },
-];
+  { id: '1', name: 'A', quantity: 2, price: 100 },
+  { id: '2', name: 'B', quantity: 1, price: 200 },
+  { id: '3', name: 'C', quantity: 3, price: 300 },
+]
 
 function calculateOrderTotal(arr) {
-	let total = 0;
-	arr.forEach((item) => {
-		total += item.price * item.quantity;
-	});
-	return total;
+  let total = 0
+  arr.forEach((item) => {
+    total += item.price * item.quantity
+  })
+  return total
 }
 
-console.log(calculateOrderTotal(orders));
+console.log(calculateOrderTotal(orders))

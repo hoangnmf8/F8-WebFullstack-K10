@@ -1,29 +1,29 @@
 const employees = [
-	{ id: 1, name: "Hoang", homeTown: "Hanoi" },
-	{ id: 2, name: "An", homeTown: "Thaibinh" },
-	{ id: 3, name: "Huy", homeTown: "Langson" },
-	{ id: 4, name: "Dinh", homeTown: "Saigon" },
-	{ id: 5, name: "Dong", homeTown: "Saigon" },
-	{ id: 6, name: "Nhinh", homeTown: "Langson" },
-	{ id: 7, name: "Tao", homeTown: "Danang" },
-];
+  { id: 1, name: 'Hoang', homeTown: 'Hanoi' },
+  { id: 2, name: 'An', homeTown: 'Thaibinh' },
+  { id: 3, name: 'Huy', homeTown: 'Langson' },
+  { id: 4, name: 'Dinh', homeTown: 'Saigon' },
+  { id: 5, name: 'Dong', homeTown: 'Saigon' },
+  { id: 6, name: 'Nhinh', homeTown: 'Langson' },
+  { id: 7, name: 'Tao', homeTown: 'Danang' },
+]
 
 const result = employees.find((item, index) => {
-	return item.homeTown === "Langson";
-});
+  return item.homeTown === 'Langson'
+})
 
 const result2 = employees.findLast((item, index) => {
-	// console.log(item, index);
-	return item.homeTown === "Langson";
-});
+  // console.log(item, index);
+  return item.homeTown === 'Langson'
+})
 
 const result3 = employees.findIndex((item, index) => {
-	return item.homeTown === "Langson";
-});
+  return item.homeTown === 'Langson'
+})
 
 const result4 = employees.findLastIndex((item, index) => {
-	return item.homeTown === "Langson";
-});
+  return item.homeTown === 'Langson'
+})
 
 // console.log(result);
 // console.log(result);
@@ -37,5 +37,5 @@ const result4 = employees.findLastIndex((item, index) => {
  * findLastIndex trả về vị trí của phần tử cuối cùng thoả mãn điều kiện.
  */
 
-const result5 = employees.filter((item) => item.homeTown === "Danang");
-console.log(result5);
+const result5 = employees.filter((item) => item.homeTown === 'Danang')
+console.log(result5)

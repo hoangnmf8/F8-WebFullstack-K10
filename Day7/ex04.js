@@ -14,40 +14,40 @@
 // });
 
 // console.log(arr);
-const brands = ["Samsung", "Apple", "Oppo", "oppo", "Xiaomi", "Huawei", "Nokia", "Bphone"];
+const brands = ['Samsung', 'Apple', 'Oppo', 'oppo', 'Xiaomi', 'Huawei', 'Nokia', 'Bphone']
 brands.sort((a, b) => {
-	// console.log({ a, b });
-	if (a > b) {
-		return 1;
-	} else if (a < b) {
-		return -1;
-	} else {
-		return 0;
-	}
-});
+  // console.log({ a, b });
+  if (a > b) {
+    return 1
+  } else if (a < b) {
+    return -1
+  } else {
+    return 0
+  }
+})
 // console.log(brands);
 
 // console.log("samsung" > "apple");
 // a -> z
 
 const students = [
-	"Nguyen Manh Huy",
-	"Nguyen Thanh An",
-	"Phan Tuan Manh",
-	"Nguyen Truong Giang",
-	"Tran Ngoc Duy",
-	"Hoang Thanh Huy",
-	"Nguyen The Han",
-	"Le Huu Trong",
-	"Vu Quoc Dung",
-	"Nguyen Hai Duong",
-	"Nguyen Trung Hieu",
-	"Tran Duy Dong",
-	"Tran Minh Hoang",
-	"Nguyen Minh Hoang",
-	"Nhung",
-	"Nguyễn Nhung",
-];
+  'Nguyen Manh Huy',
+  'Nguyen Thanh An',
+  'Phan Tuan Manh',
+  'Nguyen Truong Giang',
+  'Tran Ngoc Duy',
+  'Hoang Thanh Huy',
+  'Nguyen The Han',
+  'Le Huu Trong',
+  'Vu Quoc Dung',
+  'Nguyen Hai Duong',
+  'Nguyen Trung Hieu',
+  'Tran Duy Dong',
+  'Tran Minh Hoang',
+  'Nguyen Minh Hoang',
+  'Nhung',
+  'Nguyễn Nhung',
+]
 
 /**
  * Sắp xếp danh sách học viên theo thứ tự bảng chữ cái theo yêu cầu sau.
@@ -64,19 +64,19 @@ const students = [
  */
 
 const result = students.sort((a, b) => {
-	const nameA = a.split(" ").slice(-1);
-	const nameB = b.split(" ").slice(-1);
-	console.log({ nameA, nameB });
-	if (nameA > nameB) {
-		return 1;
-	} else if (nameA < nameB) {
-		return -1;
-	} else {
-		// so sánh tiếp họ và tên đệm
-		const familyNameA = a.split(" ").slice(0, -1).join(" ");
-		const familyNameB = b.split(" ").slice(0, -1).join(" ");
-		console.log({ familyNameA, familyNameB });
-		// if...else
-		// BTVN.
-	}
-});
+  const nameA = a.split(' ').slice(-1)
+  const nameB = b.split(' ').slice(-1)
+  console.log({ nameA, nameB })
+  if (nameA > nameB) {
+    return 1
+  } else if (nameA < nameB) {
+    return -1
+  } else {
+    // so sánh tiếp họ và tên đệm
+    const familyNameA = a.split(' ').slice(0, -1).join(' ')
+    const familyNameB = b.split(' ').slice(0, -1).join(' ')
+    console.log({ familyNameA, familyNameB })
+    // if...else
+    // BTVN.
+  }
+})

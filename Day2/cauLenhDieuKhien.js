@@ -18,34 +18,34 @@
 // 	console.log("a = 0 hoặc không phải là số");
 // }
 
-let myNumber = -99;
+let myNumber = -99
 switch (Math.abs(myNumber % 2)) {
-	case -1:
-		console.log(`${myNumber} là số âm`);
-	case 0:
-		// in ra thông báo là số chẵn
-		console.log(`${myNumber} là số chẵn`);
-		break;
-	case 1:
-		// in ra thông báo là số lẻ
-		console.log(`${myNumber} là số lẻ`);
-		break;
-	default:
-		console.log("Không thể kết luận được!");
+  case -1:
+    console.log(`${myNumber} là số âm`)
+  case 0:
+    // in ra thông báo là số chẵn
+    console.log(`${myNumber} là số chẵn`)
+    break
+  case 1:
+    // in ra thông báo là số lẻ
+    console.log(`${myNumber} là số lẻ`)
+    break
+  default:
+    console.log('Không thể kết luận được!')
 }
 
-let thoiTiet = "good";
+let thoiTiet = 'good'
 
 switch (thoiTiet) {
-	case "good":
-	case "normal":
-		console.log("Di choi");
-		break;
-	case "bad":
-		console.log("ở nhà");
-		break;
-	default:
-		"Chưa thể quyết định";
+  case 'good':
+  case 'normal':
+    console.log('Di choi')
+    break
+  case 'bad':
+    console.log('ở nhà')
+    break
+  default:
+    'Chưa thể quyết định'
 }
 
 /**

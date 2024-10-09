@@ -31,23 +31,23 @@ const invalidData = [
  */
 
 const datas = [
-	{ name: "Alice", age: 20 },
-	{ name: "Bob", age: 0 },
-	{ name: "Carol", age: -1 },
-	{ name: "David", age: null },
-	{ name: "Eve", age: NaN },
-	{ name: "Frank", age: undefined },
-	{ name: "", age: 20 },
-];
+  { name: 'Alice', age: 20 },
+  { name: 'Bob', age: 0 },
+  { name: 'Carol', age: -1 },
+  { name: 'David', age: null },
+  { name: 'Eve', age: NaN },
+  { name: 'Frank', age: undefined },
+  { name: '', age: 20 },
+]
 
-const validData = [];
-const invalidData = [];
+const validData = []
+const invalidData = []
 
 datas.forEach((item) => {
-	if (item.name && item.age && item.age > 0) {
-		validData.push(item);
-	} else {
-		invalidData.push(item);
-	}
-});
-console.log({ validData, invalidData });
+  if (item.name && item.age && item.age > 0) {
+    validData.push(item)
+  } else {
+    invalidData.push(item)
+  }
+})
+console.log({ validData, invalidData })

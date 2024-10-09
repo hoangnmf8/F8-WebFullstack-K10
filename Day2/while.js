@@ -21,11 +21,11 @@
  * - Giống while nhưng luôn thực hiện tối thiểu 1 lần lặp.
  */
 
-let i = 0;
+let i = 0
 do {
-	console.log(i);
-	i++;
-} while (i < -100);
+  console.log(i)
+  i++
+} while (i < -100)
 
 /** Các bước thực hiện trong do...while
  * 1. Thực hiện câu lệnh trong do.

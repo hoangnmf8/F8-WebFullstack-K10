@@ -34,19 +34,19 @@
  */
 
 const arr = [
-	{ id: 1, name: "hoang" },
-	{ id: 2, name: "duy" },
-	{ id: 3, name: "long" },
-	{ id: 4, name: "giang" },
-];
+  { id: 1, name: 'hoang' },
+  { id: 2, name: 'duy' },
+  { id: 3, name: 'long' },
+  { id: 4, name: 'giang' },
+]
 
 arr.forEach((item, index) => {
-	if (!item.cart) {
-		item.cart = [];
-	}
-});
+  if (!item.cart) {
+    item.cart = []
+  }
+})
 
-console.log(arr);
+console.log(arr)
 
 // Thêm `cart: []` cho từng khách hàng trong danh sách khách hàng.
 // Output:

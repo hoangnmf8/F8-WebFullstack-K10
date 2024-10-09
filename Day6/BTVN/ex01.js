@@ -40,13 +40,13 @@
  */
 
 const students = [
-	{ id: 1, name: "hoang", score: 3 },
-	{ id: 2, name: "son", score: 7 },
-	{ id: 3, name: "duy", score: 6 },
-	{ id: 4, name: "nhung", score: 10 },
-	{ id: 5, name: "thuy", score: 2 },
-	{ id: 6, name: "vu", score: 5 },
-];
+  { id: 1, name: 'hoang', score: 3 },
+  { id: 2, name: 'son', score: 7 },
+  { id: 3, name: 'duy', score: 6 },
+  { id: 4, name: 'nhung', score: 10 },
+  { id: 5, name: 'thuy', score: 2 },
+  { id: 6, name: 'vu', score: 5 },
+]
 
 /** Từ danh sách sinh viên ban đầu, phân loại sinh viên thành 3 danh sách: excellen, medium , failed
  * - excellent: score >= 8
@@ -55,47 +55,47 @@ const students = [
  */
 
 function groupByScore(arr) {
-	const excellent = [];
-	const medium = [];
-	const failed = [];
+  const excellent = []
+  const medium = []
+  const failed = []
 
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].score >= 8) {
-			excellent.push(arr[i]);
-		} else if (arr[i].score < 5) {
-			failed.push(arr[i]);
-		} else {
-			medium.push(arr[i]);
-		}
-	}
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].score >= 8) {
+      excellent.push(arr[i])
+    } else if (arr[i].score < 5) {
+      failed.push(arr[i])
+    } else {
+      medium.push(arr[i])
+    }
+  }
 
-	return {
-		excellent,
-		medium,
-		failed,
-	};
+  return {
+    excellent,
+    medium,
+    failed,
+  }
 }
 
 // console.log(groupByScore(students));
 
 function groupByScore2(arr) {
-	const excellent = [];
-	const failed = [];
-	for (let i = 0; i < arr.length; i++) {
-		if (arr[i].score >= 8) {
-			console.log(arr[i]);
-			excellent.push(arr[i]);
-			arr.splice(i, 1); // sau khi thực hiện splice thì cần tăng i lên 1 để duyệt lại chính phần tử ở vị trí i,
-			i--;
-		} else if (arr[i].score < 5) {
-			failed.push(arr[i]);
-			arr.splice(i, 1);
-			i--;
-		} else {
-			continue;
-		}
-	}
-	return { excellent, failed, medium: arr };
+  const excellent = []
+  const failed = []
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].score >= 8) {
+      console.log(arr[i])
+      excellent.push(arr[i])
+      arr.splice(i, 1) // sau khi thực hiện splice thì cần tăng i lên 1 để duyệt lại chính phần tử ở vị trí i,
+      i--
+    } else if (arr[i].score < 5) {
+      failed.push(arr[i])
+      arr.splice(i, 1)
+      i--
+    } else {
+      continue
+    }
+  }
+  return { excellent, failed, medium: arr }
 }
 
-console.log(groupByScore2(students));
+console.log(groupByScore2(students))

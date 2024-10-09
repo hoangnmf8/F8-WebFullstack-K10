@@ -29,14 +29,14 @@
 // console.log(arr.some());
 
 const employees = [
-	{ id: 1, name: "Hoang", homeTown: "Hanoi", gender: "male" },
-	{ id: 2, name: "An", homeTown: "Thaibinh", gender: "male" },
-	{ id: 3, name: "Huy", homeTown: "Langson", gender: "male" },
-	{ id: 4, name: "Dinh", homeTown: "Saigon", gender: "male" },
-	{ id: 5, name: "Dong", homeTown: "Saigon", gender: "" },
-	{ id: 6, name: "Nhinh", homeTown: "Langson", gender: "female" },
-	{ id: 7, name: "Tao", homeTown: "Danang", gender: "male" },
-];
+  { id: 1, name: 'Hoang', homeTown: 'Hanoi', gender: 'male' },
+  { id: 2, name: 'An', homeTown: 'Thaibinh', gender: 'male' },
+  { id: 3, name: 'Huy', homeTown: 'Langson', gender: 'male' },
+  { id: 4, name: 'Dinh', homeTown: 'Saigon', gender: 'male' },
+  { id: 5, name: 'Dong', homeTown: 'Saigon', gender: '' },
+  { id: 6, name: 'Nhinh', homeTown: 'Langson', gender: 'female' },
+  { id: 7, name: 'Tao', homeTown: 'Danang', gender: 'male' },
+]
 
 /** Kiểm tra xem danh sách nhân viên có ai là nữ không? */
 
@@ -57,7 +57,7 @@ const employees = [
 // Dùng every() để kiểm tra xem mỗi nhân viên đều có đầy đủ thông tin id, name, homeTown, gender hay không?
 
 const result = employees.every((item) => {
-	return item.id && item.name && item.homeTown && item.gender;
-});
+  return item.id && item.name && item.homeTown && item.gender
+})
 
-console.log(result);
+console.log(result)

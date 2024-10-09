@@ -37,14 +37,14 @@
 
 // TODO: Tính số giờ (làm tròn 2 chữ số thập phân sau dấy phẩy) từ 23:59 phút ngày 10/8/2024 đến nay.
 
-const date4 = new Date("2024-08-10 23:59:00");
+const date4 = new Date('2024-08-10 23:59:00')
 
-const date5 = new Date();
+const date5 = new Date()
 
-const resultDuy = date5 - date4;
-console.log(+(resultDuy / (1000 * 60 * 60)).toFixed(2));
+const resultDuy = date5 - date4
+console.log(+(resultDuy / (1000 * 60 * 60)).toFixed(2))
 
-const a = "10";
+const a = '10'
 
-const b = +a;
-console.log(a, b);
+const b = +a
+console.log(a, b)

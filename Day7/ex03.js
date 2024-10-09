@@ -5,7 +5,7 @@
  *
  */
 
-const arr = ["Hoang", "Duy", "Hai Duong", "Dung"];
+const arr = ['Hoang', 'Duy', 'Hai Duong', 'Dung']
 
 // const newArr = arr.slice(0).reverse();
 
@@ -15,11 +15,11 @@ const arr = ["Hoang", "Duy", "Hai Duong", "Dung"];
 // const newArr2 = arr.toReversed();
 // console.log(newArr2);
 
-arr[10] = "Nhung";
-console.log(arr);
-arr.reverse();
-console.log(arr);
+arr[10] = 'Nhung'
+console.log(arr)
+arr.reverse()
+console.log(arr)
 
 for (let i = 0; i < arr.length; i++) {
-	console.log(arr[i]);
+  console.log(arr[i])
 }
