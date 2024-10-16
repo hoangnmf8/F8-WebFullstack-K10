@@ -13,7 +13,7 @@
 		<link rel="stylesheet" href="./style.css" />
 	</head>
 	<body>
-		<form action="">
+		<form action="" id="todoForm">
 			<h1>Todo Application</h1>
 			<div class="mb-3">
 				<label for="title" class="form-label">Title</label>
@@ -23,41 +23,22 @@
 				<label for="description" class="form-label">Description</label>
 				<textarea name="description" id="description" class="form-control"></textarea>
 			</div>
-			<div class="mb-3">
-				<button class="btn btn-primary w-100">Add</button>
+			<div class="mb-3 button-group">
+				<button class="btn btn-secondary" type="button" id="btnReset">Reset</button>
+				<button class="btn btn-primary" id="btnSubmit">Add</button>
 			</div>
 		</form>
 
 		<table>
 			<thead>
 				<tr>
-					<th>STT</th>
+					<th>ID</th>
 					<th>Title</th>
 					<th>Description</th>
 					<th>Action</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>Task 1 - Completed</td>
-					<td>Task detail 1</td>
-					<td>
-						<button onclick="" class="btn btn-danger">Remove</button>
-						<button onclick="" class="btn btn-warning">Update</button>
-					</td>
-				</tr>
-
-				<tr>
-					<td>1</td>
-					<td>Task 2- Pending</td>
-					<td>Task detail 2</td>
-					<td>
-						<button onclick="" class="btn btn-danger">Remove</button>
-						<button onclick="" class="btn btn-warning">Update</button>
-					</td>
-				</tr>
-			</tbody>
+			<tbody id="todoList"></tbody>
 		</table>
 
 		<script
