@@ -1,0 +1,17 @@
+{
+	"name": "btvn",
+	"version": "1.0.0",
+	"description": "btvn-f8",
+	"main": "main.js",
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"start": "json-server --watch db.json --port 3000"
+	},
+	"keywords": [
+		"f8",
+		"nodejs",
+		"json-server"
+	],
+	"author": "hoangnm",
+	"license": "MIT"
+}

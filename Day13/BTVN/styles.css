@@ -1,0 +1,38 @@
+
+* {
+  box-sizing: border-box;
+}
+
+form {
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  padding: 24px;
+  margin-bottom: 40px;
+  .group-btn {
+    text-align: center;
+  }
+
+  button {
+    min-width: 100px
+  }
+}
+
+table {
+  width: 100%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid #555;
+  padding: 4px;
+}
+
+.completed {
+  color: green
+}
+
+.pending {
+  color: palevioletred
+}
