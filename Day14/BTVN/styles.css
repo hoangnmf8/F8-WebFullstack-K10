@@ -1,0 +1,11 @@
+* {
+	box-sizing: border-box;
+}
+
+form {
+	width: 100%;
+	margin: 40px auto 60px;
+	border: 1px solid #aaa;
+	border-radius: 8px;
+	padding: 24px;
+}
