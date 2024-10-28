@@ -1,0 +1,23 @@
+{
+	"products": [
+		{ "id": 1, "title": "Macbook Pro", "price": 2000 },
+		{ "id": 2, "title": "Macbook Air", "price": 1800 }
+	],
+	"posts": [
+		{
+			"id": 1,
+			"title": "json-server",
+			"author": "typicode"
+		}
+	],
+	"comments": [
+		{
+			"id": 1,
+			"body": "some comment",
+			"postId": 1
+		}
+	],
+	"profile": {
+		"name": "typicode"
+	}
+}

@@ -42,6 +42,16 @@ function taskB() {
 // 		console.log(err);
 // 	});
 
+function taskC() {
+	return new Promise(function (resolve, reject) {
+		setTimeout(() => {
+			resolve("task C done!");
+		}, 1000);
+	});
+}
+
+console.time("promise chaining");
+
 taskA()
 	.then((result) => {
 		console.log("Fulfilled");
@@ -50,6 +60,11 @@ taskA()
 	})
 	.then((result) => {
 		console.log(result);
+		return taskC();
+	})
+	.then((result) => {
+		console.log(result);
+		console.timeEnd("promise chaining");
 	})
 	.catch((err) => {
 		console.log("Rejected");
@@ -59,8 +74,30 @@ taskA()
 /**
  * Promise là một đối tượng đặc biệt.
  * Khai báo promise dùng từ khoá `new Promise` truyền vào 1 hàm.
+ * Promise có 3 trạng thái (state): Pending, fullilled, rejected.
+ * Promise có 3 phương thức: then (thực hiện logic khi promise fullilled), catch (thực hiện logic khi promise rejected) và finally (thực hiện sau cùng và kết thúc công việc).
  */
 
 /**
- * Chaining Promise
+ * Chaining Promise:
+ * Kết quả trả về từ hàm trong `then` phía trước là tham số truyền vào cho hàm trong `then` phía sau.
+ * Những việc cần thời gian được mô tả bằng promise -> khi một lời hứa được thực hiện thành công, nó gọi tiếp lời hứa tiếp theo -> promise chaining.
  */
+
+fetch("https://dummyjson.com/products")
+	// .then((response) => {
+	// 	const data = response.json();
+	// 	return data;
+	// })
+	.then((res) => res.json())
+	.then((data) => {
+		console.log(data);
+	})
+	.catch((err) => {
+		console.log(err);
+	})
+	.finally(() => {
+		// Thực hiện khi kết thúc mọi việc chính và dọn dẹp, thông báo kết thúc.
+		// Clean up: removeListener, clearTimeout, clearInterval, reset website và các công việc.
+		console.log("finally!");
+	});
