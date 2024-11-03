@@ -3,3 +3,21 @@ export function getParams(key) {
 	const params = new URLSearchParams(window.location.search);
 	return params.get(key);
 }
+
+export function render(target, datas) {
+	datas.forEach((item) => {
+		const productElement = document.createElement("div");
+		productElement.innerHTML = /*html*/ `
+        <div class="product-card">
+          <a href='/product-detail.html?id=${item.id}'><img src="${item.thumbnail}" alt="${item.title}" /></a>
+          <div class="product-infor">
+            <h2>${item.title}</h2>
+            <div>Giá: ${item.price}</div>
+            <p>Mô tả: ${item.description}</p>
+            <button>Xem chi tiết</button>
+          </div>
+        </div>
+    `;
+		target && target.appendChild(productElement);
+	});
+}
