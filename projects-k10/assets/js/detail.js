@@ -18,6 +18,9 @@ function renderDetail(target, data) {
         <h2>${data.title}</h2>
         <p>Giá: ${data.price}</p>
         <p>Còn ${data.stock} sản phẩm</p>
+        <div>
+          <span>Chọn số lượng: </span> <input type="number" min=1 max=${data.stock} value="1"/>
+        </div>
         <p>Danh mục: ${data.category}</p>
         <p>Chi tiết: ${data.description}</p>
         <button class="btn btn-danger">Mua ngay</button>

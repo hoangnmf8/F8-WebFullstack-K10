@@ -14,7 +14,7 @@ export function render(target, datas) {
             <h2>${item.title}</h2>
             <div>Giá: ${item.price}</div>
             <p>Mô tả: ${item.description}</p>
-            <button>Xem chi tiết</button>
+            <button class="btn btn-danger">Xem chi tiết</button>
           </div>
         </div>
     `;
