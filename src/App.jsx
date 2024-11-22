@@ -1,7 +1,5 @@
-import styles from "./App.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header";
-import ProductList from "./components/productsList/ProductsList";
 
 /**
  *
@@ -14,8 +12,7 @@ function App() {
 	return (
 		<>
 			<Header />
-
-			<ProductList />
+			<h1>Hello</h1>
 			<Footer />
 		</>
 	);
