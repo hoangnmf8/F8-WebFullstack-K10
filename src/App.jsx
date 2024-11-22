@@ -1,23 +1,37 @@
+import { useState } from "react";
 import styles from "./App.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header";
 
-function Button(props) {
-	console.log(props);
-	return <button className={props.variant}>{props.children}</button>;
+function Welcome(props) {
+	// props.name = props.name + "aha";
+
+	// const [state, setState] = useState(initial value)
+	const [count, setCount] = useState(0);
+
+	function handleClick() {
+		// count++;
+		console.log("hello");
+		setCount((prev) => prev + 1);
+		// setCount((prev) => prev + 1);
+		// setCount(count + 9);
+		// setCount(count + 3);
+		//! Không được cố gắng thay đổi trực tiếp giá trị của state.
+	}
+	return (
+		<>
+			<h1>Xin chao {props.name}</h1>
+			<button onClick={handleClick}>Click me</button>
+			{count}
+		</>
+	);
 }
 
 function App() {
 	return (
 		<>
 			<Header />
-			<Button variant="btn btn-primary">
-				<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aspernatur, deserunt!</p>
-			</Button>
-			<Button variant="btn btn-secondary">Btn Secondary</Button>
-			<Button variant="btn btn-warning">Btn Warning</Button>
-			<Button variant="btn btn-danger">Btn Danger</Button>
-			<Button variant="btn btn-link">Btn Link</Button>
+			<Welcome name="Hoang" />
 			<Footer />
 		</>
 	);
