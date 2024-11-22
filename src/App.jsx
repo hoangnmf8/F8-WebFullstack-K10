@@ -1,37 +1,21 @@
-import { useState } from "react";
 import styles from "./App.module.scss";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header";
+import ProductList from "./components/productsList/ProductsList";
 
-function Welcome(props) {
-	// props.name = props.name + "aha";
-
-	// const [state, setState] = useState(initial value)
-	const [count, setCount] = useState(0);
-
-	function handleClick() {
-		// count++;
-		console.log("hello");
-		setCount((prev) => prev + 1);
-		// setCount((prev) => prev + 1);
-		// setCount(count + 9);
-		// setCount(count + 3);
-		//! Không được cố gắng thay đổi trực tiếp giá trị của state.
-	}
-	return (
-		<>
-			<h1>Xin chao {props.name}</h1>
-			<button onClick={handleClick}>Click me</button>
-			{count}
-		</>
-	);
-}
+/**
+ *
+ ** Bài 1: Tạo 1 nút bấm toogle product list để ẩn hiện danh sách sản phẩm.
+ ** Bài 2: Tạo nút bấm "See more" ở cuối danh sách sản phẩm, mỗi lần ấn sẽ hiển thị thêm 10 sản phẩm.
+ ** Bài 3: Trong component Header tạo nút bấm "handleChangeTheme" để chuyển đổi giữa DarkMode và LightMode
+ */
 
 function App() {
 	return (
 		<>
 			<Header />
-			<Welcome name="Hoang" />
+
+			<ProductList />
 			<Footer />
 		</>
 	);
