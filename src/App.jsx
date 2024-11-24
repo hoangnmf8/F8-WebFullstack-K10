@@ -1,18 +1,33 @@
+import { useEffect, useState } from "react";
+import "./App.scss";
+
 import Footer from "./components/footer/Footer";
 import Header from "./components/Header";
 
 /**
+ * 1. useEffect có dependences là mảng rỗng
  *
- ** Bài 1: Tạo 1 nút bấm toogle product list để ẩn hiện danh sách sản phẩm.
- ** Bài 2: Tạo nút bấm "See more" ở cuối danh sách sản phẩm, mỗi lần ấn sẽ hiển thị thêm 10 sản phẩm.
- ** Bài 3: Trong component Header tạo nút bấm "handleChangeTheme" để chuyển đổi giữa DarkMode và LightMode
  */
 
+function ComponentA() {
+	useEffect(() => {
+		console.log("trong useEffect cua component A");
+	});
+	return <h2>Noi dung component A</h2>;
+}
+
 function App() {
+	const [show, setShow] = useState(false);
+	useEffect(() => {
+		console.log("trong useEffect cua component App");
+	}, [show]);
 	return (
 		<>
 			<Header />
 			<h1>Hello</h1>
+			<button className="btn btn-primary" onClick={() => setShow(!show)}>
+				Toggle
+			</button>
 			<Footer />
 		</>
 	);
