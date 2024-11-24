@@ -2,19 +2,25 @@ import React, { useEffect, useState } from "react";
 
 const Shop = () => {
 	const [products, setProducts] = useState([]);
-	const [limit, setLimit] = useState(3);
+	const [limit, setLimit] = useState(10);
 	const [skip, setSkip] = useState(0);
 	const [page, setPage] = useState(1);
+	const initUrl = `https://dummyjson.com/products`;
+	const [url, setUrl] = useState(initUrl);
+	const [searchValue, setSearchValue] = useState("");
+
+	if (searchValue !== "") {
+	}
 	useEffect(() => {
-		fetch(
-			limit === "all" ? `https://dummyjson.com/products` : `https://dummyjson.com/products?limit=${limit}&skip=${skip}`
-		)
+		fetch(searchValue === "" ? url : `https://dummyjson.com/products?limit=${limit}&skip=${skip}`)
 			.then((res) => res.json())
 			.then(({ products }) => {
 				console.log(products);
 				setProducts(products);
 			});
 	}, [limit, skip]);
+
+	// `https://dummyjson.com/products?limit=${limit}&skip=${skip}
 
 	const handleSelectLimit = (e) => {
 		const selectedLimit = e.target.value;
@@ -31,7 +37,8 @@ const Shop = () => {
 	};
 
 	const handleSearch = (e) => {
-		console.log(e.target.value);
+		setSearchValue(e.target.value);
+		setUrl(`https://dummyjson.com/products/search?q=${searchValue}`);
 	};
 
 	return (
