@@ -16,7 +16,8 @@ function ProductList() {
 		console.log("trong useEffect");
 		return () => {
 			console.log("trong return cua useEffect");
-			// function dọn dẹp ngay trước khi component ProductList được unmounting
+			// Được gọi ngay trước khi component ProductList được unmounting.
+			// Vì vậy đây được gọi là clean-up funtion
 		};
 	}, []);
 	return <h1>Danh sach san pham</h1>;
