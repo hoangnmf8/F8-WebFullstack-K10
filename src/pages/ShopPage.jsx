@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const Shop = () => {
+const ShopPage = () => {
 	const [products, setProducts] = useState([]);
 	const [limit, setLimit] = useState(10);
 	const [skip, setSkip] = useState(0);
@@ -53,13 +54,17 @@ const Shop = () => {
 			</select>
 			{products.map((item) => (
 				<div key={item.id}>
-					<img src={item.thumbnail} alt={item.title} />
+					<Link to={`/products/${item.id}`}>
+						<img src={item.thumbnail} alt={item.title} />
+					</Link>
 					<span>{item.id}</span>
-					<h3>{item.title}</h3>
+					<Link to={`/products/${item.id}`}>
+						<h3>{item.title}</h3>
+					</Link>
 					<p>Giá: {item.price}</p>
-					<a href="" className="btn btn-danger">
+					<Link to={`/products/${item.id}`} className="btn btn-danger">
 						Xem chi tiết
-					</a>
+					</Link>
 				</div>
 			))}
 			{/* nut bam phan trang */}
@@ -73,4 +78,6 @@ const Shop = () => {
 	);
 };
 
-export default Shop;
+export default ShopPage;
+
+// SKU = Stock Keeping Unit
