@@ -1,15 +1,44 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ProductForm = () => {
+	const nav = useNavigate();
 	const [product, setProduct] = useState({
 		title: "",
 		price: 0,
 	});
 
-	const handleChange = () => {};
+	// Cập nhật state
+	const handleChange = (e) => {
+		const { name, value } = e.target;
+		setProduct((prev) => ({ ...prev, [name]: value }));
+	};
+
+	// Gửi dữ liệu đi
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		console.log(111);
+		(async () => {
+			try {
+				const res = await fetch("http://localhost:3000/products", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json",
+					},
+					body: JSON.stringify(product),
+				});
+
+				const data = await res.json();
+				console.log(data);
+
+				// Thong bao them thanh cong.
+				confirm("Them thanh cong, ban muon quay lai danh sach san pham khong?") && nav("/admin/products");
+
+				// Cap nhat lai danh sach san pham neu nguoi dung quay lai danh sach san pham
+				// Neu nguoi dung o lai ProductForm, sau khi submit thi phai reset form.
+			} catch (error) {
+				console.log(error);
+			}
+		})();
 	};
 	return (
 		<div>
@@ -25,7 +54,7 @@ const ProductForm = () => {
 						name="title"
 						id="price"
 						placeholder="Title"
-						value={product.title}
+						defaultValue={product.title}
 						onChange={handleChange}
 					/>
 				</div>
@@ -40,8 +69,8 @@ const ProductForm = () => {
 						name="price"
 						id="price"
 						placeholder="Price"
-						value={product.price}
-						onChange={handleChange()}
+						defaultValue={product.price}
+						onChange={handleChange}
 					/>
 				</div>
 

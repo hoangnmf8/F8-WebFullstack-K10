@@ -1495,6 +1495,26 @@
         "https://cdn.dummyjson.com/products/images/groceries/Kiwi/1.png"
       ],
       "thumbnail": "https://cdn.dummyjson.com/products/images/groceries/Kiwi/thumbnail.png"
+    },
+    {
+      "title": "them san pham A",
+      "price": "200",
+      "id": 31
+    },
+    {
+      "title": "them san pham A",
+      "price": "200",
+      "id": 32
+    },
+    {
+      "title": "them san pham B",
+      "price": "100",
+      "id": 33
+    },
+    {
+      "title": "them san pham C",
+      "price": "100",
+      "id": 34
     }
   ]
 }
