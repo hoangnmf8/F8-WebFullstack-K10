@@ -1,10 +1,6 @@
 import React from "react";
 
-const ProductTable = ({ products }) => {
-	console.log(products);
-	const handleRemove = (id) => {
-		console.log(id);
-	};
+const ProductTable = ({ products, onRemove }) => {
 	return (
 		<div>
 			<div>
@@ -28,7 +24,7 @@ const ProductTable = ({ products }) => {
 								<td>{item.price}</td>
 								<td>{item.description}</td>
 								<td>
-									<button className="btn btn-danger" onClick={() => handleRemove(item.id)}>
+									<button className="btn btn-danger" onClick={() => onRemove(item.id)}>
 										Remove
 									</button>
 									<button className="btn btn-warning">Update</button>
