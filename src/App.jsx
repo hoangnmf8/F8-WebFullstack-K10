@@ -45,25 +45,8 @@ const App = () => {
 
 		confirm("Are you sure?") &&
 			(async () => {
-				// try {
-				// 	const res = await fetch(`http://localhost:3000/products/${id}`, {
-				// 		method: "DELETE",
-				// 	});
-				// 	if (res.ok) {
-				// 		// Cách 1: filter và setProducts
-				// 		const newProducts = products.filter((item) => item.id !== id);
-				// 		setProducts(newProducts);
-				// 		// Cách 2: gọi lại getAll
-				// 		// getAll();
-				// 	} else {
-				// 		console.log("Error!");
-				// 	}
-				// } catch (error) {
-				// 	console.log(error);
-				// }
-
 				const res = await removeById("/products", id);
-				if (res.ok) {
+				if (res.status === 200) {
 					const newProducts = products.filter((item) => item.id !== id);
 					setProducts(newProducts);
 				} else {
