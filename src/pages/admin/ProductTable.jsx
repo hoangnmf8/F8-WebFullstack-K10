@@ -30,7 +30,9 @@ const ProductTable = ({ products, onRemove }) => {
 									<button className="btn btn-danger" onClick={() => onRemove(item.id)}>
 										Remove
 									</button>
-									<button className="btn btn-warning">Update</button>
+									<Link to={`/admin/products/update/${item.id}`} className="btn btn-warning">
+										Update
+									</Link>
 								</td>
 							</tr>
 						))}

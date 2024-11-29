@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { create } from "../../axios";
+import { updateById } from "../../axios/index";
 
 const ProductForm = () => {
+	const { id } = useParams();
+	console.log("id: ", id);
 	const nav = useNavigate();
-	const [product, setProduct] = useState({
+	const initValue = {
 		title: "",
 		price: 0,
-	});
+	};
+	const [product, setProduct] = useState(initValue);
 
 	// Cập nhật state
 	const handleChange = (e) => {
@@ -18,31 +23,38 @@ const ProductForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		(async () => {
-			try {
-				const res = await fetch("http://localhost:3000/products", {
-					method: "POST",
-					headers: {
-						"Content-Type": "application/json",
-					},
-					body: JSON.stringify(product),
-				});
+			// try {
+			// 	const res = await fetch("http://localhost:3000/products", {
+			// 		method: "POST",
+			// 		headers: {
+			// 			"Content-Type": "application/json",
+			// 		},
+			// 		body: JSON.stringify(product),
+			// 	});
+			// 	const data = await res.json();
+			// 	console.log(data);
+			// 	// Thong bao them thanh cong.
+			// 	confirm("Them thanh cong, ban muon quay lai danh sach san pham khong?") && nav("/admin/products");
+			// 	// Cap nhat lai danh sach san pham neu nguoi dung quay lai danh sach san pham
+			// 	// Neu nguoi dung o lai ProductForm, sau khi submit thi phai reset form.
+			// } catch (error) {
+			// 	console.log(error);
+			// }
 
-				const data = await res.json();
-				console.log(data);
-
-				// Thong bao them thanh cong.
-				confirm("Them thanh cong, ban muon quay lai danh sach san pham khong?") && nav("/admin/products");
-
-				// Cap nhat lai danh sach san pham neu nguoi dung quay lai danh sach san pham
-				// Neu nguoi dung o lai ProductForm, sau khi submit thi phai reset form.
-			} catch (error) {
-				console.log(error);
+			if (id) {
+				// logic update
+				const data = await updateById("/products", id, product);
+			} else {
+				// logic add
+				const data = await create("/products", product);
 			}
+
+			// logic chung
 		})();
 	};
 	return (
 		<div>
-			<h1>Thêm mới sản phẩm</h1>
+			<h1>{id ? "Cập nhật" : "Thêm mới"} sản phẩm</h1>
 			<form action="">
 				<div className="form-group">
 					<label htmlFor="title" className="form-label">
@@ -76,7 +88,7 @@ const ProductForm = () => {
 
 				<div className="form-group">
 					<button className="btn btn btn-primary w-100" onClick={handleSubmit}>
-						Add Product
+						{id ? "Cập nhật" : "Thêm mới"}
 					</button>
 				</div>
 			</form>

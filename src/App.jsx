@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes } from "react-router-dom";
-import instance, { getAll } from "./axios";
+import instance, { getAll, removeById } from "./axios";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
 import CategoryPage from "./pages/CategoryPage";
@@ -45,22 +45,29 @@ const App = () => {
 
 		confirm("Are you sure?") &&
 			(async () => {
-				try {
-					const res = await fetch(`http://localhost:3000/products/${id}`, {
-						method: "DELETE",
-					});
-					if (res.ok) {
-						// Cách 1: filter và setProducts
-						const newProducts = products.filter((item) => item.id !== id);
-						setProducts(newProducts);
+				// try {
+				// 	const res = await fetch(`http://localhost:3000/products/${id}`, {
+				// 		method: "DELETE",
+				// 	});
+				// 	if (res.ok) {
+				// 		// Cách 1: filter và setProducts
+				// 		const newProducts = products.filter((item) => item.id !== id);
+				// 		setProducts(newProducts);
+				// 		// Cách 2: gọi lại getAll
+				// 		// getAll();
+				// 	} else {
+				// 		console.log("Error!");
+				// 	}
+				// } catch (error) {
+				// 	console.log(error);
+				// }
 
-						// Cách 2: gọi lại getAll
-						// getAll();
-					} else {
-						console.log("Error!");
-					}
-				} catch (error) {
-					console.log(error);
+				const res = await removeById("/products", id);
+				if (res.ok) {
+					const newProducts = products.filter((item) => item.id !== id);
+					setProducts(newProducts);
+				} else {
+					console.log("Error!");
 				}
 			})();
 	};
@@ -75,9 +82,8 @@ const App = () => {
 
 				<Route path="/admin" element={<Dashboard />}>
 					<Route path="products" element={<ProductTable products={products} onRemove={handleRemoveProduct} />} />
-					{/* /admin/products */}
 					<Route path="products/add" element={<ProductForm />} />
-					{/* /admin/products/add */}
+					<Route path="products/update/:id" element={<ProductForm />} />
 				</Route>
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
