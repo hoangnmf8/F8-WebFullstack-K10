@@ -30,8 +30,8 @@ const App = () => {
 				<Route path="/categories" element={<CategoryPage />} />
 				<Route path="/products/:id" element={<ProductDetail />} />
 
-				<Route path="/admin" element={<Dashboard products={products} />}>
-					<Route path="products" element={<ProductTable />} />
+				<Route path="/admin" element={<Dashboard />}>
+					<Route path="products" element={<ProductTable products={products} />} />
 					{/* /admin/products */}
 					<Route path="products/add" element={<ProductForm />} />
 					{/* /admin/products/add */}
