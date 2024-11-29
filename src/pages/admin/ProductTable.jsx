@@ -1,11 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const ProductTable = ({ products, onRemove }) => {
 	return (
 		<div>
 			<div>
 				<h1>Quản lý sản phẩm</h1>
-				<button className="btn btn-primary">Add new product</button>
+				<Link to={`/admin/products/add`} className="btn btn-primary">
+					Add new product
+				</Link>
 				<table className="table table-bordered table-striped">
 					<thead>
 						<tr className="text-center">
