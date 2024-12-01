@@ -24,19 +24,16 @@ const App = () => {
 		})();
 	}, []);
 
-	const handleRemoveProduct = (id) => {
-		//logic Delete
-
-		confirm("Are you sure?") &&
-			(async () => {
-				const res = await removeById("/products", id);
-				if (res.status === 200) {
-					const newProducts = products.filter((item) => item.id !== id);
-					setProducts(newProducts);
-				} else {
-					console.log("Error!");
-				}
-			})();
+	const handleRemoveProduct = async (id) => {
+		if (confirm("Are you sure?")) {
+			const res = await removeById("/products", id);
+			if (res.status === 200) {
+				const newProducts = products.filter((item) => item.id !== id);
+				setProducts(newProducts);
+			} else {
+				console.log("Error!");
+			}
+		}
 	};
 	return (
 		<div>

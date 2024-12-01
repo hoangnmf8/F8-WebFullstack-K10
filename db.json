@@ -1547,5 +1547,13 @@
       "description": "",
       "id": 40
     }
+  ],
+  "users": [
+    {
+      "email": "hoang@gmail.com",
+      "password": "$2a$10$91vNpDBFMVly9FKl9rWsZuQXu6M3Hgsof14zAtD8X2tE22TSr3qnq",
+      "username": "hoangf8",
+      "id": 1
+    }
   ]
 }
