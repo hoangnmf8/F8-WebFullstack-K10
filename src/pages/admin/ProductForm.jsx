@@ -1,17 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { create } from "../../axios";
+import { create, getById } from "../../axios";
 import { updateById } from "../../axios/index";
 
 const ProductForm = () => {
 	const { id } = useParams();
-	console.log("id: ", id);
 	const nav = useNavigate();
 	const initValue = {
 		title: "",
 		price: 0,
 	};
 	const [product, setProduct] = useState(initValue);
+
+	id &&
+		useEffect(() => {
+			(async () => {
+				const data = await getById("/products", id);
+				setProduct(data);
+			})();
+		}, [id]);
 
 	// Cập nhật state
 	const handleChange = (e) => {
@@ -23,24 +30,6 @@ const ProductForm = () => {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		(async () => {
-			// try {
-			// 	const res = await fetch("http://localhost:3000/products", {
-			// 		method: "POST",
-			// 		headers: {
-			// 			"Content-Type": "application/json",
-			// 		},
-			// 		body: JSON.stringify(product),
-			// 	});
-			// 	const data = await res.json();
-			// 	console.log(data);
-			// 	// Thong bao them thanh cong.
-			// 	confirm("Them thanh cong, ban muon quay lai danh sach san pham khong?") && nav("/admin/products");
-			// 	// Cap nhat lai danh sach san pham neu nguoi dung quay lai danh sach san pham
-			// 	// Neu nguoi dung o lai ProductForm, sau khi submit thi phai reset form.
-			// } catch (error) {
-			// 	console.log(error);
-			// }
-
 			if (id) {
 				// logic update
 				const data = await updateById("/products", id, product);
@@ -48,6 +37,8 @@ const ProductForm = () => {
 				// logic add
 				const data = await create("/products", product);
 			}
+
+			window.confirm("Go back ProductTable page?") && nav("/admin/products");
 
 			// logic chung
 		})();
@@ -66,7 +57,8 @@ const ProductForm = () => {
 						name="title"
 						id="price"
 						placeholder="Title"
-						defaultValue={product.title}
+						// defaultValue={product.title}
+						value={product.title}
 						onChange={handleChange}
 					/>
 				</div>
@@ -81,7 +73,8 @@ const ProductForm = () => {
 						name="price"
 						id="price"
 						placeholder="Price"
-						defaultValue={product.price}
+						// defaultValue={parseFloat(product.price)}
+						value={product.price}
 						onChange={handleChange}
 					/>
 				</div>
