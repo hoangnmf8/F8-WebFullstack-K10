@@ -1,16 +1,10 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
-import * as z from "zod";
 
 import { createNew, getById, updateById } from "../../axios";
 import { zodResolver } from "@hookform/resolvers/zod";
-
-const schemaProduct = z.object({
-	title: z.string().min(6, { message: "Tên sản phẩm cần tối thiểu 6 ký tự" }),
-	price: z.number().positive(),
-	description: z.string().optional(),
-});
+import { schemaProduct } from "../../schemas/productShemas";
 
 const ProductForm = () => {
 	const { id } = useParams();
@@ -24,13 +18,13 @@ const ProductForm = () => {
 		resolver: zodResolver(schemaProduct),
 	});
 
-	id &&
-		useEffect(() => {
+	useEffect(() => {
+		id &&
 			(async () => {
 				const data = await getById("/products", id);
 				reset(data);
 			})();
-		}, [id]);
+	}, [id]);
 
 	const handleAddProduct = async (product) => {
 		console.log(product);
@@ -46,6 +40,8 @@ const ProductForm = () => {
 		}
 		reset();
 	};
+
+	// console.log(watch(errors));
 
 	return (
 		<div>
@@ -96,7 +92,7 @@ const ProductForm = () => {
 
 				<div className="form-group">
 					<button className="btn btn-secondary" onClick={() => reset()}>
-						Reset
+						Nhập lại
 					</button>{" "}
 					<button className="btn btn btn-primary" onClick={handleSubmit}>
 						{id ? "Cập nhật" : "Thêm mới"}
