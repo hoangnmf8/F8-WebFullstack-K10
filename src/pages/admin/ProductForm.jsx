@@ -1,7 +1,16 @@
 import React, { useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useParams } from "react-router-dom";
+import * as z from "zod";
+
 import { createNew, getById, updateById } from "../../axios";
+import { zodResolver } from "@hookform/resolvers/zod";
+
+const schemaProduct = z.object({
+	title: z.string().min(6, { message: "Tên sản phẩm cần tối thiểu 6 ký tự" }),
+	price: z.number().positive(),
+	description: z.string().optional(),
+});
 
 const ProductForm = () => {
 	const { id } = useParams();
@@ -11,7 +20,9 @@ const ProductForm = () => {
 		formState: { errors },
 		handleSubmit,
 		reset,
-	} = useForm();
+	} = useForm({
+		resolver: zodResolver(schemaProduct),
+	});
 
 	id &&
 		useEffect(() => {
@@ -52,6 +63,7 @@ const ProductForm = () => {
 						placeholder="Title"
 						{...register("title", { required: true })}
 					/>
+					{errors.title && <p className="text-danger">{errors.title?.message}</p>}
 				</div>
 
 				<div className="form-group">
@@ -64,12 +76,29 @@ const ProductForm = () => {
 						name="price"
 						id="price"
 						placeholder="Price"
-						{...register("price", { required: true })}
+						{...register("price", { required: true, valueAsNumber: true })}
+					/>
+					{errors.price && <p className="text-danger">{errors.price?.message}</p>}
+				</div>
+
+				<div className="form-group">
+					<label htmlFor="description" className="form-label">
+						Description
+					</label>
+					<textarea
+						className="form-control"
+						name="description"
+						id="description"
+						placeholder="Description"
+						{...register("description", { required: true })}
 					/>
 				</div>
 
 				<div className="form-group">
-					<button className="btn btn btn-primary w-100" onClick={handleSubmit}>
+					<button className="btn btn-secondary" onClick={() => reset()}>
+						Reset
+					</button>{" "}
+					<button className="btn btn btn-primary" onClick={handleSubmit}>
 						{id ? "Cập nhật" : "Thêm mới"}
 					</button>
 				</div>
