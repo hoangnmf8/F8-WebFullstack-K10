@@ -16,7 +16,7 @@ const App = () => {
 	const [products, setProducts] = useState([]);
 
 	const location = useLocation();
-	console.log("location: ", location);
+	// console.log("location: ", location);
 	useEffect(() => {
 		(async () => {
 			const data = await getAll("/products");

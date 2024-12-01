@@ -1,52 +1,45 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import { create, getById } from "../../axios";
-import { updateById } from "../../axios/index";
+import React, { useEffect } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom";
+import { createNew, getById, updateById } from "../../axios";
 
 const ProductForm = () => {
 	const { id } = useParams();
-	const nav = useNavigate();
-	const initValue = {
-		title: "",
-		price: 0,
-	};
-	const [product, setProduct] = useState(initValue);
+	const {
+		register,
+		watch,
+		formState: { errors },
+		handleSubmit,
+		reset,
+	} = useForm();
 
 	id &&
 		useEffect(() => {
 			(async () => {
 				const data = await getById("/products", id);
-				setProduct(data);
+				reset(data);
 			})();
 		}, [id]);
 
-	// Cập nhật state
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setProduct((prev) => ({ ...prev, [name]: value }));
+	const handleAddProduct = async (product) => {
+		console.log(product);
+		// request add product
+		if (id) {
+			// logic edit
+			const data = await updateById("/products", id, product);
+			console.log(data);
+		} else {
+			// logic add
+			const data = await createNew("/products", product);
+			console.log(data);
+		}
+		reset();
 	};
 
-	// Gửi dữ liệu đi
-	const handleSubmit = (e) => {
-		e.preventDefault();
-		(async () => {
-			if (id) {
-				// logic update
-				const data = await updateById("/products", id, product);
-			} else {
-				// logic add
-				const data = await create("/products", product);
-			}
-
-			window.confirm("Go back ProductTable page?") && nav("/admin/products");
-
-			// logic chung
-		})();
-	};
 	return (
 		<div>
 			<h1>{id ? "Cập nhật" : "Thêm mới"} sản phẩm</h1>
-			<form action="">
+			<form onSubmit={handleSubmit(handleAddProduct)}>
 				<div className="form-group">
 					<label htmlFor="title" className="form-label">
 						Title
@@ -57,9 +50,7 @@ const ProductForm = () => {
 						name="title"
 						id="price"
 						placeholder="Title"
-						// defaultValue={product.title}
-						value={product.title}
-						onChange={handleChange}
+						{...register("title", { required: true })}
 					/>
 				</div>
 
@@ -73,9 +64,7 @@ const ProductForm = () => {
 						name="price"
 						id="price"
 						placeholder="Price"
-						// defaultValue={parseFloat(product.price)}
-						value={product.price}
-						onChange={handleChange}
+						{...register("price", { required: true })}
 					/>
 				</div>
 
