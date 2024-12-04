@@ -1,16 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { Route, Routes, useLocation } from "react-router-dom";
-import instance, { getAll, removeById } from "./axios";
 import Footer from "./components/footer/Footer";
 import Header from "./components/header/Header";
-import CategoryPage from "./pages/CategoryPage";
-import HomePage from "./pages/HomePage";
-import NotFoundPage from "./pages/NotFoundPage";
-import ProductDetail from "./pages/ProductDetail";
-import ServicesPage from "./pages/ServicesPage";
 import Dashboard from "./pages/admin/Dashboard";
 import ProductForm from "./pages/admin/ProductForm";
 import ProductTable from "./pages/admin/ProductTable";
+import CategoryPage from "./pages/CategoryPage";
+import HomePage from "./pages/HomePage";
+import LoginPage from "./pages/LoginPage";
+import NotFoundPage from "./pages/NotFoundPage";
+import ProductDetail from "./pages/ProductDetail";
+import RegisterPage from "./pages/RegisterPage";
+import ServicesPage from "./pages/ServicesPage";
+import { getAll, removeById } from "./services/crudServices";
 
 const App = () => {
 	const [products, setProducts] = useState([]);
@@ -49,6 +51,9 @@ const App = () => {
 					<Route path="products/add" element={<ProductForm />} />
 					<Route path="products/update/:id" element={<ProductForm />} />
 				</Route>
+
+				<Route path="/register" element={<RegisterPage />} />
+				<Route path="/login" element={<LoginPage />} />
 				<Route path="*" element={<NotFoundPage />} />
 			</Routes>
 			<Footer />
