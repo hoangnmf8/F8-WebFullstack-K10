@@ -1,11 +1,12 @@
 import { zodResolver } from "@hookform/resolvers/zod";
 import React from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { registerSchema } from "../schemas/authSchemas";
-import { registerAccount } from "../services/authServices";
+import { auth, registerAccount } from "../services/authServices";
 
 const RegisterPage = () => {
+	const nav = useNavigate();
 	const {
 		handleSubmit,
 		register,
@@ -16,8 +17,8 @@ const RegisterPage = () => {
 	});
 
 	const handleRegister = async (dataBody) => {
-		const data = await registerAccount(dataBody);
-		console.log(data);
+		const data = await auth("/register", dataBody);
+		data.user && confirm("Register new account successfully, login now?") && nav("/login");
 	};
 	return (
 		<>
