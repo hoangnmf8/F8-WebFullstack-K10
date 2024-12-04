@@ -57,12 +57,15 @@ const App = () => {
 				</Route>
 
 				{/* superAdmin */}
+				{/* <Route path="/super-admin" element={<ProtectedRoute />}>
+					<Route index element={<SuperAdmin />} />
+				</Route> */}
+
 				<Route
 					path="/super-admin"
 					element={
-						<ProtectedRoute>
-							{/* <SuperAdmin /> */}
-							<Route index element={<SuperAdmin />} />
+						<ProtectedRoute role="superAdmin">
+							<SuperAdmin />
 						</ProtectedRoute>
 					}
 				/>
