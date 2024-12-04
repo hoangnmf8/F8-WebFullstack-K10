@@ -14,6 +14,8 @@ import RegisterPage from "./pages/RegisterPage";
 import ServicesPage from "./pages/ServicesPage";
 import { getAll, removeById } from "./services/crudServices";
 import LayoutAdmin from "./layout/LayoutAdmin";
+import ProtectedRoute from "./layout/ProtectedRoute";
+import SuperAdmin from "./pages/admin/SuperAdmin";
 
 const App = () => {
 	const [products, setProducts] = useState([]);
@@ -53,6 +55,17 @@ const App = () => {
 					<Route path="products/add" element={<ProductForm />} />
 					<Route path="products/update/:id" element={<ProductForm />} />
 				</Route>
+
+				{/* superAdmin */}
+				<Route
+					path="/super-admin"
+					element={
+						<ProtectedRoute>
+							{/* <SuperAdmin /> */}
+							<Route index element={<SuperAdmin />} />
+						</ProtectedRoute>
+					}
+				/>
 
 				<Route path="/register" element={<RegisterPage />} />
 				<Route path="/login" element={<LoginPage />} />
