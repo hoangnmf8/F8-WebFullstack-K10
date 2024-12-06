@@ -1,9 +1,11 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { removeById } from "../../services/crudServices";
 import { ProductContext } from "../../contexts/ProductContext";
 
-const ProductTable = () => {
-	const products = useContext(ProductContext);
+export const ProductTable = () => {
+	const { state, dispatch } = useContext(ProductContext);
+
 	return (
 		<div>
 			<div>
@@ -22,16 +24,16 @@ const ProductTable = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{products.map((item) => (
+						{state.products.map((item) => (
 							<tr key={item.id}>
 								<td>{item.id}</td>
 								<td>{item.title}</td>
 								<td>{item.price}</td>
 								<td>{item.description}</td>
 								<td>
-									<button className="btn btn-danger" onClick={() => onRemove(item.id)}>
+									{/* <button className="btn btn-danger" onClick={() => handleRemoveProduct(item.id)}>
 										Remove
-									</button>
+									</button> */}
 									<Link to={`/admin/products/update/${item.id}`} className="btn btn-warning">
 										Update
 									</Link>
@@ -44,5 +46,3 @@ const ProductTable = () => {
 		</div>
 	);
 };
-
-export default ProductTable;

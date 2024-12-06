@@ -17,12 +17,6 @@ const ProductForm = () => {
 		resolver: zodResolver(schemaProduct),
 	});
 
-	// useEffect(async () => {
-	// 	console.log("hello");
-	// }, []);
-
-	// Không khai báo async function cho callback trong useEffect.
-
 	useEffect(() => {
 		id &&
 			(async () => {
