@@ -25,6 +25,7 @@ const Header = () => {
 					{user.email ? (
 						<li>
 							<button to="/logout">Logout</button>
+							{`Hello ${user.email}`}
 						</li>
 					) : (
 						<li>

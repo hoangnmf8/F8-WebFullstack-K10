@@ -1,10 +1,18 @@
-import { createContext } from "react";
+import { createContext, useEffect, useState } from "react";
+import { getAll } from "../services/crudServices";
 
 export const ProductContext = createContext();
 
-const products = [{ id: 1, title: "tivi", price: 1000 }];
-
 const ProductProvider = ({ children }) => {
+	const [products, setProducts] = useState([]);
+
+	useEffect(() => {
+		(async () => {
+			const data = await getAll("/products");
+			console.log(data);
+			setProducts(data);
+		})();
+	}, []);
 	return <ProductContext.Provider value={products}>{children}</ProductContext.Provider>;
 };
 

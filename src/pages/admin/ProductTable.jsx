@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { ProductContext } from "../../contexts/ProductContext";
 
-const ProductTable = ({ products, onRemove }) => {
+const ProductTable = () => {
+	const products = useContext(ProductContext);
 	return (
 		<div>
 			<div>
