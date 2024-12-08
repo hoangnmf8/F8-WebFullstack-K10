@@ -14,9 +14,17 @@ export const productReducer = (state, action) => {
 		case "ADD_PRODUCT": {
 			return {
 				...state,
-				products: [...products, action.payload],
+				products: [...state.products, action.payload],
 			};
 		}
+
+		case "UPDATE_PRODUCT": {
+			return {
+				...state,
+				products: state.products.map((item) => (item.id === action.payload.id ? action.payload : item)),
+			};
+		}
+
 		case "REMOVE_PRODUCT": {
 			return {
 				...state,

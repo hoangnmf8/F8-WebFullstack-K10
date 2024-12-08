@@ -1,16 +1,9 @@
-import React, { useContext, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { removeById } from "../../services/crudServices";
-import { ProductContext } from "../../contexts/ProductContext";
+import useProducts from "../../hooks/useProducts";
 
 export const ProductTable = () => {
-	const { products } = useContext(ProductContext);
-	// const handleRemoveProduct = async (id) => {
-	// 	const res = await removeById("/products", id);
-	// 	if (res.status === 200) {
-	// 		dispatch({ type: "REMOVE_PRODUCT", payload: id });
-	// 	}
-	// };
+	const { products, removeProduct } = useProducts();
 	return (
 		<div>
 			<div>
@@ -30,16 +23,16 @@ export const ProductTable = () => {
 					</thead>
 					<tbody>
 						{products &&
-							state.products.map((item) => (
+							products.map((item) => (
 								<tr key={item.id}>
 									<td>{item.id}</td>
 									<td>{item.title}</td>
 									<td>{item.price}</td>
 									<td>{item.description}</td>
 									<td>
-										{/* <button className="btn btn-danger" onClick={() => handleRemoveProduct(item.id)}>
+										<button className="btn btn-danger" onClick={() => removeProduct(item.id)}>
 											Remove
-										</button> */}
+										</button>
 										<Link to={`/admin/products/update/${item.id}`} className="btn btn-warning">
 											Update
 										</Link>

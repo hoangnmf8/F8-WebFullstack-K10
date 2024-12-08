@@ -1,5 +1,5 @@
 import { useEffect, useReducer } from "react";
-import { createNew, getAll } from "../services/crudServices";
+import { createNew, getAll, removeById, updateById } from "../services/crudServices";
 import { initialState, productReducer } from "../reducers/productReducer";
 
 const useProducts = () => {
@@ -10,15 +10,24 @@ const useProducts = () => {
 			dispatch({ type: "SET_PRODUCTS", payload: data });
 		}
 		fetchProducts();
-	}, []);
+	}, [dispatch]);
 
 	const createProduct = async (dataProduct) => {
 		const data = await createNew("/products", dataProduct);
-		return data;
+		dispatch({ type: "ADD_PRODUCT", payload: data });
 	};
 
-	const removeProduct = async (dataProduct) => {};
-	const updateProduct = async (dataProduct) => {};
+	const removeProduct = async (id) => {
+		if (confirm("Are you sure?")) {
+			await removeById("/products", id);
+			dispatch({ type: "REMOVE_PRODUCT", payload: id });
+		}
+	};
+	const updateProduct = async (id, product) => {
+		const data = await updateById("/products", id, product);
+		console.log(data);
+		dispatch({ type: "UPDATE_PRODUCT", payload: data });
+	};
 	return {
 		products: state.products,
 		createProduct,

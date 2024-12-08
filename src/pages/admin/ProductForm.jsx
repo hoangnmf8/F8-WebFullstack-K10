@@ -4,9 +4,12 @@ import { useParams } from "react-router-dom";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { schemaProduct } from "../../schemas/productShemas";
 import { createNew, getById, updateById } from "../../services/crudServices";
+import useProducts from "../../hooks/useProducts";
 
 const ProductForm = () => {
 	const { id } = useParams();
+
+	const { createProduct, updateProduct } = useProducts();
 	const {
 		register,
 		watch,
@@ -26,21 +29,15 @@ const ProductForm = () => {
 	}, [id]);
 
 	const handleAddProduct = async (product) => {
-		console.log(product);
 		// request add product
-		if (id) {
-			// logic edit
-			const data = await updateById("/products", id, product);
-			console.log(data);
-		} else {
-			// logic add
-			const data = await createNew("/products", product);
-			console.log(data);
-		}
+		// if (id) {
+		// 	updateProduct(id, product);
+		// } else {
+		// 	createProduct(product);
+		// }
+		id ? updateProduct(id, product) : createProduct(product);
 		reset();
 	};
-
-	// console.log(watch(errors));
 
 	return (
 		<div>
