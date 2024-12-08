@@ -1,26 +1,17 @@
 import { createContext, useEffect, useReducer } from "react";
-import productReducer from "../reducers/productReducer";
+import { initialState, productReducer } from "../reducers/productReducer";
 import { getAll } from "../services/crudServices";
 
 export const ProductContext = createContext();
-
-const action = {
-	type: "Them duong",
-	payload: "100g duong",
-};
-
-const ProductProvider = ({ children }) => {
-	const [state, dispatch] = useReducer(productReducer, {
-		products: [],
-	});
+export const ProductProvider = ({ children }) => {
+	const [state, dispatch] = useReducer(productReducer, initialState);
 	useEffect(() => {
-		(async () => {
+		async function fetchProducts() {
 			const data = await getAll("/products");
-			console.log(data);
 			dispatch({ type: "SET_PRODUCTS", payload: data });
-		})();
+		}
+		fetchProducts();
 	}, []);
+
 	return <ProductContext.Provider value={{ state, dispatch }}>{children}</ProductContext.Provider>;
 };
-
-export default ProductProvider;

@@ -1,11 +1,17 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { removeById } from "../../services/crudServices";
 import { ProductContext } from "../../contexts/ProductContext";
 
 export const ProductTable = () => {
 	const { state, dispatch } = useContext(ProductContext);
-
+	console.log(state);
+	const handleRemoveProduct = async (id) => {
+		const res = await removeById("/products", id);
+		if (res.status === 200) {
+			dispatch({ type: "REMOVE_PRODUCT", payload: id });
+		}
+	};
 	return (
 		<div>
 			<div>
@@ -24,22 +30,23 @@ export const ProductTable = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{state.products.map((item) => (
-							<tr key={item.id}>
-								<td>{item.id}</td>
-								<td>{item.title}</td>
-								<td>{item.price}</td>
-								<td>{item.description}</td>
-								<td>
-									{/* <button className="btn btn-danger" onClick={() => handleRemoveProduct(item.id)}>
-										Remove
-									</button> */}
-									<Link to={`/admin/products/update/${item.id}`} className="btn btn-warning">
-										Update
-									</Link>
-								</td>
-							</tr>
-						))}
+						{state.products &&
+							state.products.map((item) => (
+								<tr key={item.id}>
+									<td>{item.id}</td>
+									<td>{item.title}</td>
+									<td>{item.price}</td>
+									<td>{item.description}</td>
+									<td>
+										<button className="btn btn-danger" onClick={() => handleRemoveProduct(item.id)}>
+											Remove
+										</button>
+										<Link to={`/admin/products/update/${item.id}`} className="btn btn-warning">
+											Update
+										</Link>
+									</td>
+								</tr>
+							))}
 					</tbody>
 				</table>
 			</div>
