@@ -2,11 +2,12 @@ import React, { useContext } from "react";
 import { ProductContext } from "../contexts/ProductContext";
 
 const HomePage = () => {
-	const { state } = useContext(ProductContext);
+	const { products } = useContext(ProductContext);
+
 	return (
 		<div>
 			<h1>Home Page</h1>
-			{JSON.stringify(state.products)}
+			{JSON.stringify(products)}
 		</div>
 	);
 };
