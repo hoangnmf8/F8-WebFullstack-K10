@@ -1,21 +1,17 @@
+import { DECREMENT, INCREMENT } from "../actions/countActions";
+
 const inititalState = {
 	count: 0,
 };
 export const countReducer = (state = inititalState, action) => {
 	switch (action.type) {
-		case "INCREMENT":
+		case INCREMENT:
 			return {
 				...state,
 				count: state.count + 1,
 			};
 
-		case "ADD":
-			return {
-				...state,
-				count: state.count + action.payload,
-			};
-
-		case "DECREMENT":
+		case DECREMENT:
 			return {
 				...state,
 				count: state.count - 1,
