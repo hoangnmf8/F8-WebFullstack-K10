@@ -1,20 +1,10 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { decrement, increment } from "./actions/countActions";
+import ProductTable from "./pages/admin/ProductTable";
 
 const App = () => {
-	const { count } = useSelector((state) => state.dem);
-	const dispatch = useDispatch();
 	return (
 		<>
-			<h1>Count: {count}</h1>
-			<button className="btn btn-primary" onClick={() => dispatch(increment())}>
-				Increment
-			</button>
-
-			<button className="btn btn-primary" onClick={() => dispatch(decrement())}>
-				Decrement
-			</button>
+			<ProductTable />
 		</>
 	);
 };

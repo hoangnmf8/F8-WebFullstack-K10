@@ -7,3 +7,8 @@ export const addProduct = (product) => ({
 	type: ADD_PRODUCT,
 	payload: product,
 });
+
+export const setProduct = (products) => ({
+	type: SET_PRODUCTS,
+	payload: products,
+});
