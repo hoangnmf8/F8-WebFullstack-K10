@@ -1,5 +1,4 @@
 import instance from ".";
-import { addProduct } from "../actions/productActions";
 
 export const getAllProducts = async () => {
 	const { data } = await instance.get("/products");

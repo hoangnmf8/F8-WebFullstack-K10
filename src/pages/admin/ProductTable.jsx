@@ -18,9 +18,9 @@ const ProductTable = () => {
 	if (error) return <p>{error}</p>;
 	return (
 		<>
-			<table className="table-borderd table-striped">
+			<table className="table table-bordered table-striped">
 				<thead>
-					<tr>
+					<tr className="text-center">
 						<th>ID</th>
 						<th>Title</th>
 						<th>Price</th>
