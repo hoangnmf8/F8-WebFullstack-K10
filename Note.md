@@ -1,44 +1,11 @@
-## cài đặt
+Thao tac CRUD @reduxjs/tooolkit
 
-```bash
-npm i typescript -g
-```
+## Cai dat
 
-## tạo file tsconfig.json
+## Tao slice
 
-```bash
-tsc --init
-```
+## Tao store
 
-Cấu hình tsconfig.json
+## Su dung Provider boc ung dung
 
-```json
-{
-	"compilerOptions": {
-		"target": "es5",
-		"module": "commonjs",
-		"outDir": "./dist",
-		"rootDir": "./src",
-		"strict": true,
-		"esModuleInterop": true
-	}
-}
-```
-
-- Thực hiện biên dịch với config:
-
-```bash
-tsc
-```
-
-## Thực hiện biên dịch:
-
-```bash
-tsc index.ts
-```
-
-## watch mode
-
-```bash
-tsc index.ts --watch
-```
+## Su dung trong Component
