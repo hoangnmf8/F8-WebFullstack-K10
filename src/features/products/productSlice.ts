@@ -1,14 +1,14 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { fetchProducts, createProduct, editProduct, removeProduct } from "./productActions";
 import { IProduct } from "../../interfaces/IProduct";
 
-type State = {
+type ProductState = {
 	products: IProduct[];
 	loading: boolean;
 	error?: string | null;
 };
 
-const initialState: State = {
+const initialState: ProductState = {
 	products: [],
 	loading: false,
 	error: null,
@@ -23,7 +23,7 @@ const productSlice = createSlice({
 			.addCase(fetchProducts.pending, (state) => {
 				state.loading = true;
 			})
-			.addCase(fetchProducts.fulfilled, (state, action) => {
+			.addCase(fetchProducts.fulfilled, (state, action: PayloadAction<IProduct[]>) => {
 				state.loading = false;
 				state.products = action.payload;
 			})
@@ -34,7 +34,7 @@ const productSlice = createSlice({
 			.addCase(createProduct.pending, (state) => {
 				state.loading = true;
 			})
-			.addCase(createProduct.fulfilled, (state, action) => {
+			.addCase(createProduct.fulfilled, (state, action: PayloadAction<IProduct>) => {
 				state.loading = false;
 				state.products.push(action.payload);
 			})
@@ -45,7 +45,7 @@ const productSlice = createSlice({
 			.addCase(editProduct.pending, (state) => {
 				state.loading = true;
 			})
-			.addCase(editProduct.fulfilled, (state, action) => {
+			.addCase(editProduct.fulfilled, (state, action: PayloadAction<IProduct>) => {
 				state.loading = false;
 				const index = state.products.findIndex((product) => product.id === action.payload.id);
 				if (index !== -1) {
@@ -59,7 +59,7 @@ const productSlice = createSlice({
 			.addCase(removeProduct.pending, (state) => {
 				state.loading = true;
 			})
-			.addCase(removeProduct.fulfilled, (state, action) => {
+			.addCase(removeProduct.fulfilled, (state, action: PayloadAction<number>) => {
 				state.loading = false;
 				state.products = state.products.filter((product) => product.id !== action.payload);
 			})

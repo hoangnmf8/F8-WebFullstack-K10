@@ -1,26 +1,12 @@
-import { useDispatch, useSelector } from "react-redux";
 import "./App.css";
-import { IProduct } from "./interfaces/IProduct";
-import { useEffect } from "react";
-import instance from "./services";
-import { fetchProducts } from "./features/products/productActions";
-
-interface RootState {
-	products: IProduct[];
-}
+import ProductTable from "./pages/admin/ProductTable";
 
 function App() {
-	const { products, loading, error } = useSelector((state: RootState) => state.products);
-
-	const dispatch = useDispatch();
-
-	useEffect(() => {
-		(async () => {
-			const { data } = await instance.get("/products");
-		})();
-	});
-
-	return <></>;
+	return (
+		<>
+			<ProductTable />
+		</>
+	);
 }
 
 export default App;
