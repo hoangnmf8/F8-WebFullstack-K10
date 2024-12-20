@@ -14,7 +14,6 @@ export const addProduct = async (product: IProduct): Promise<IProduct> => {
 
 export const deleteProduct = async (id: number) => {
 	const res: AxiosResponse = await instance.delete(`/products/${id}`);
-	// Logic return sẽ thay đổi sau khi thay đổi services
 	return res;
 };
 

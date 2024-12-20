@@ -10,14 +10,13 @@ interface RootState {
 }
 
 function App() {
-	const products = useSelector((state: RootState) => state.products);
+	const { products, loading, error } = useSelector((state: RootState) => state.products);
 
 	const dispatch = useDispatch();
 
 	useEffect(() => {
 		(async () => {
 			const { data } = await instance.get("/products");
-			dispatch(fetchProducts(data));
 		})();
 	});
 

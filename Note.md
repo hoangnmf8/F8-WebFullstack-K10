@@ -1,11 +1,5 @@
-Thao tac CRUD @reduxjs/tooolkit
+**Học viên nộp bài tập tại đây.**
 
-## Cai dat
+**Yêu cầu:** Gửi link Github và link Deploy (Vercel).
 
-## Tao slice
-
-## Tao store
-
-## Su dung Provider boc ung dung
-
-## Su dung trong Component
+**Deadline:** 20:00:00 ngày 17/12/2024
