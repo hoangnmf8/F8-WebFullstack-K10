@@ -1,10 +1,11 @@
 import "./App.css";
-import ProductTable from "./pages/admin/ProductTable";
+import AppRoutes from "./routes/AppRoutes";
 
 function App() {
 	return (
 		<>
-			<ProductTable />
+			{/* <ProductTable /> */}
+			<AppRoutes />
 		</>
 	);
 }

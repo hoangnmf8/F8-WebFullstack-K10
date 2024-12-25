@@ -2,8 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../store/store";
 import { useEffect } from "react";
 import { fetchProducts, removeProduct } from "../../features/products/productActions";
+import { useLocation, useNavigate, useNavigation } from "react-router-dom";
 
 const ProductTable = () => {
+	const location = useLocation();
+
 	const dispatch = useDispatch<AppDispatch>();
 	const { products, loading, error } = useSelector((state: RootState) => state.products);
 
