@@ -65,6 +65,26 @@ const server = createServer((req, res) => {
 			res.writeHead(404);
 			res.end(JSON.stringify({ message: "User not found" }));
 		}
+	} else if (url.startsWith("/users/") && method === "GET") {
+		// url: /users/123
+		// logic
+		const id = parseInt(url.split("/")[2]);
+		console.log(id);
+		const user = users.find((item) => item.id === id);
+		if (user) {
+			return res.end(
+				JSON.stringify({
+					message: "Get user detail successfully",
+					user,
+				})
+			);
+		}
+
+		return res.end(
+			JSON.stringify({
+				message: "Not found user!",
+			})
+		);
 	} else {
 		// error handling
 		console.log("Router not found");
