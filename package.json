@@ -1,0 +1,21 @@
+{
+	"name": "f8-k10",
+	"version": "1.0.0",
+	"description": "learn nodejs + expressjs",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"dev": "nodemon index.js"
+	},
+	"keywords": [
+		"f8",
+		"nodejs",
+		"expressjs",
+		"hoc-lap-trinh"
+	],
+	"author": "hoangnm-ndm",
+	"license": "MIT",
+	"dependencies": {
+		"nodemon": "^3.1.9"
+	}
+}
