@@ -1,40 +1,58 @@
-// npm i express
-
 import express from "express";
+import mongoose from "mongoose";
 
 const app = express();
 const PORT = 8888;
-const uri = "http://localhost:3000";
 
-const users = [{ id: 1, email: "h@gmail.com" }];
-
-// middleware
 app.use(express.json());
 
-app.get("/", (req, res) => {
-	res.send("Hello, Express.js!");
+mongoose
+	.connect("mongodb://127.0.0.1:27017/f8-k10")
+	.then(() => {
+		console.log("Connect database successfully!");
+	})
+	.catch((error) => {
+		console.error(`Connect failed: ${error}`);
+	});
+
+app.get("/products", async (req, res) => {
+	try {
+		// await MyModel.find({});
+	} catch (error) {
+		console.log(error);
+	}
 });
 
-app.get("/users", (req, res) => {
-	fetch(`${uri}/users`)
-		.then((res) => res.json())
-		.then((data) => {
-			console.log(data);
-			res.send({
-				message: "Get all users successfully",
-				users: data,
-			});
-		});
-	// res.send(users);
+app.get("/products/:id", async (req, res) => {
+	try {
+		// Model.findById()
+	} catch (error) {
+		console.log(error);
+	}
 });
 
-app.post("/users", (req, res) => {
-	console.log(req.body);
-	res.send("create successfully");
+app.delete("/products/:id", async (req, res) => {
+	try {
+		// Model.findByIdAndDelete()
+	} catch (error) {
+		console.log(error);
+	}
 });
 
-app.get("/hello", (req, res) => {
-	res.send(`<h1>Hello, F8!</h1>`);
+app.post("/products", async (req, res) => {
+	try {
+		// Model.create(req.body)
+	} catch (error) {
+		console.log(error);
+	}
+});
+
+app.patch("/products/:id", async (req, res) => {
+	try {
+		// Model.findByIdAndUpdate(id, dataUpdate, optional)
+	} catch (error) {
+		console.log(error);
+	}
 });
 
 app.listen(PORT, () => {
