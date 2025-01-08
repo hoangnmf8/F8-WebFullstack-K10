@@ -14,6 +14,10 @@ const productSchema = new mongoose.Schema(
 			type: String,
 			default: "Updating",
 		},
+		categoryId: {
+			type: String,
+			default: "sjhdjshdsjhdehuu91829",
+		},
 	},
 	{ timestamps: true, versionKey: false }
 );

@@ -12,10 +12,9 @@ export const create = async (req, res) => {
 			message: "Create successfully!",
 			datas,
 		});
-	} catch (error) {
-		return res.status(400).send({
-			message: "Error!",
-			error: error.message || "Error!",
+	} catch (err) {
+		res.status(400).send({
+			message: "Error",
 		});
 	}
 };
