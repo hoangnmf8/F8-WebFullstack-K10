@@ -40,23 +40,22 @@ export const getAll = async (req, res) => {
 	}
 };
 
-export const getById = async (req, res) => {
+export const getById = async (req, res, next) => {
 	try {
 		const datas = await Product.findById(req.params.id);
 		if (!datas) {
 			return res.status(404).send({
 				message: "Not found!",
 			});
+			// throw Error("Not found product");
 		}
 		return res.status(200).send({
 			message: "Get successfully!",
 			datas,
 		});
 	} catch (error) {
-		return res.status(400).send({
-			message: "Error!",
-			error: error.message || "Error!",
-		});
+		console.log("alo");
+		next();
 	}
 };
 

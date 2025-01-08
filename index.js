@@ -14,6 +14,11 @@ connectDB();
 
 app.use("/", routes);
 
+// Xử lý not found phải đặt ở sau cùng các routes
+app.use((req, res, next) => {
+	res.status(404).send("Sorry can't find that!");
+});
+
 app.listen(PORT, () => {
 	console.log(`Server is running on port: ${PORT}`);
 });
