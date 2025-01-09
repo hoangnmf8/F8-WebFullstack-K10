@@ -1,4 +1,5 @@
 import mongoose from "mongoose";
+import { Schema } from "zod";
 
 const productSchema = new mongoose.Schema(
 	{
@@ -15,8 +16,8 @@ const productSchema = new mongoose.Schema(
 			default: "Updating",
 		},
 		categoryId: {
-			type: String,
-			default: "sjhdjshdsjhdehuu91829",
+			type: Schema.Types.ObjectId,
+			ref: "Category",
 		},
 	},
 	{ timestamps: true, versionKey: false }
