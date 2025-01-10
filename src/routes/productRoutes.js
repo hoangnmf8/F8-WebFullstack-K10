@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { create, getAll, getById, removeById, updateById } from "../controllers/productControllers.js";
-import { validBodyRequest } from "../validations/index.js";
 import productSchema from "../validations/productSchema.js";
+import { validBodyRequest } from "../middlewares/validBodyRequest.js";
 
 const productRoutes = Router();
 

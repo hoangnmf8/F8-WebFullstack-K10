@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import { Schema } from "zod";
 
 const productSchema = new mongoose.Schema(
 	{
@@ -16,7 +15,7 @@ const productSchema = new mongoose.Schema(
 			default: "Updating",
 		},
 		categoryId: {
-			type: Schema.Types.ObjectId,
+			type: mongoose.Schema.Types.ObjectId,
 			ref: "Category",
 		},
 	},

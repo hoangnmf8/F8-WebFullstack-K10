@@ -21,7 +21,7 @@ const categorySchema = new mongoose.Schema(
 		products: [
 			{
 				productId: {
-					type: Schema.Types.ObjectId,
+					type: mongoose.Schema.Types.ObjectId,
 					ref: "Product",
 				},
 			},
@@ -36,3 +36,5 @@ const categorySchema = new mongoose.Schema(
 const Category = mongoose.model("Category", categorySchema);
 
 export default Category;
+
+// Main category (Phụ kiện)-> Sub Category (keyboard, mouse, headphone)-> Product (sản phẩm cụ thể)

@@ -4,9 +4,9 @@ import authRoutes from "./authRoutes.js";
 
 const routes = Router();
 
-routes.use("/products", productRoutes);
 routes.use("/auth", authRoutes);
-// /auth/register
-// /auth/login
+
+routes.use("/products", productRoutes);
+routes.use("/categories", () => console.log("categories"));
 
 export default routes;
