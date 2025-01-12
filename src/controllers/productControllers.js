@@ -1,102 +1,133 @@
+import Category from "../models/Category.js";
 import Product from "../models/Product.js";
+import mongoose from "mongoose";
 
-export const create = async (req, res) => {
-	try {
-		const datas = await Product.create(req.body);
-		if (!datas) {
-			return res.status(404).send({
-				message: "Not found!",
-			});
-		}
-		return res.status(200).send({
-			message: "Create successfully!",
-			datas,
-		});
-	} catch (err) {
-		res.status(400).send({
-			message: "Error",
-		});
-	}
+export const getAllProducts = async (req, res, next) => {
+  const products = await Product.find({
+    isHidden: false,
+    deletedAt: null,
+  }).populate("categoryId", "title");
+  if (!products) {
+    return next(new Error("No products found"));
+  }
+  return res.status(200).json(products);
 };
 
-export const getAll = async (req, res) => {
-	try {
-		const datas = await Product.find();
-		if (!datas || datas.length === 0) {
-			return res.status(404).send({
-				message: "Not found!",
-			});
-		}
-		return res.status(200).send({
-			message: "Get successfully!",
-			datas,
-		});
-	} catch (error) {
-		return res.status(400).send({
-			message: "Error!",
-			error: error.message || "Error!",
-		});
-	}
+export const getProductById = async (req, res, next) => {
+  const { id } = req.params;
+  const product = await Product.findById(id).populate("categoryId", "title");
+  if (!product) {
+    return next(new Error("Product not found"));
+  }
+  return res.status(200).json(product);
 };
 
-export const getById = async (req, res, next) => {
-	try {
-		const datas = await Product.findById(req.params.id);
-		if (!datas) {
-			return res.status(404).send({
-				message: "Not found!",
-			});
-			// throw Error("Not found product");
-		}
-		return res.status(200).send({
-			message: "Get successfully!",
-			datas,
-		});
-	} catch (error) {
-		console.log("alo");
-		next();
-	}
+export const createProduct = async (req, res, next) => {
+  let { title, price, categoryId, description } = req.body;
+
+  if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
+    // Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định "67836a60a83094583683c85e"
+    categoryId = "67836a60a83094583683c85e";
+  } else {
+    // Nếu Id danh mục hợp lệ, kiểm tra xem danh mục có thực sự còn tồn tại không
+    const category = await Category.findById(categoryId);
+    if (!category) {
+      return next(new Error("Category not found"));
+    }
+  }
+
+  const product = await Product.create({
+    title,
+    price,
+    categoryId,
+    description,
+  });
+  // Thêm id sản phẩm vào danh mục
+  await Category.updateOne(
+    { _id: categoryId },
+    { $push: { products: product._id } },
+  );
+
+  return res.status(201).json(product);
 };
 
-export const removeById = async (req, res) => {
-	try {
-		const datas = await Product.findByIdAndDelete(req.params.id);
-		if (!datas) {
-			return res.status(404).send({
-				message: "Not found!",
-			});
-		}
-		return res.status(200).send({
-			message: "Delete successfully!",
-			datas,
-		});
-	} catch (error) {
-		return res.status(400).send({
-			message: "Error!",
-			error: error.message || "Error!",
-		});
-	}
+export const updateProduct = async (req, res, next) => {
+  const { id } = req.params;
+  const { title, price, categoryId, description } = req.body;
+
+  // Kiểm tra xem categoryId chuẩn bị cập nhật có còn tồn tại không?
+  const category = await Category.findById(categoryId);
+  if (!category) {
+    return next(new Error("Category not found"));
+  }
+
+  // Cập nhật sản phẩm
+  const product = await Product.findByIdAndUpdate(
+    id,
+    { title, price, categoryId, description },
+    { new: true, timestamps: true },
+  );
+
+  // Nếu như có sự cập nhật categoryId thì xoá id sản phẩm khỏi danh mục cũ và thêm id sản phẩm vào danh mục mới
+  if (product.categoryId.toString() !== categoryId) {
+    await Category.updateOne(
+      { _id: product.categoryId },
+      { $pull: { products: id } },
+    );
+    await Category.updateOne({ _id: categoryId }, { $push: { products: id } });
+  }
+
+  return res.status(200).json(product);
+
+  // Thông thường việc kiểm tra nhiều điều kiện kép để thực hiện một transaction sẽ được thực hiện bằng cách sử dụng thư viện như mongoose-transaction hoặc transaction trong MongoDB.
 };
 
-export const updateById = async (req, res) => {
-	try {
-		const datas = await Product.findByIdAndUpdate(req.params.id, req.body, {
-			new: true,
-			timestamps: true,
-		});
-		if (!datas) {
-			return res.status(404).send({
-				message: "Not found!",
-			});
-		}
-		return res.status(200).send({
-			message: "Update successfully!",
-			datas,
-		});
-	} catch (error) {
-		return res.status(400).send({
-			message: "Error!",
-			error: error.message || "Error!",
-		});
-	}
+export const softDeleteProduct = async (req, res, next) => {
+  const { id } = req.params;
+  const product = await Product.findByIdAndUpdate(
+    id,
+    { deletedAt: new Date(), isHidden: true },
+    { new: true },
+  );
+  if (!product) {
+    return next(new Error("Product not found"));
+  }
+
+  return res.status(200).json(product);
+};
+
+export const deleteProduct = async (req, res, next) => {
+  const { id } = req.params;
+  const product = await Product.findByIdAndDelete(id);
+  if (!product) {
+    return next(new Error("Product not found"));
+  }
+
+  // Xoá id sản phẩm khỏi danh mục
+  await Category.updateOne(
+    { _id: product.categoryId },
+    { $pull: { products: id } },
+  );
+
+  return res.status(200).json(product);
+};
+
+export const restoreProduct = async (req, res, next) => {
+  const { id } = req.params;
+  const product = await Product.findByIdAndUpdate(
+    id,
+    { deletedAt: null, isHidden: false },
+    { new: true },
+  );
+  if (!product) {
+    return next(new Error("Product not found"));
+  }
+
+  // Thêm id sản phẩm vào danh mục
+  await Category.updateOne(
+    { _id: product.categoryId },
+    { $push: { products: id } },
+  );
+
+  return res.status(200).json(product);
 };

@@ -1,14 +1,24 @@
 import { Router } from "express";
-import { create, getAll, getById, removeById, updateById } from "../controllers/productControllers.js";
-import productSchema from "../validations/productSchema.js";
+import {
+  createProduct,
+  deleteProduct,
+  getAllProducts,
+  getProductById,
+  restoreProduct,
+  softDeleteProduct,
+  updateProduct,
+} from "../controllers/productControllers.js";
+import productSchema from "../schemas/productSchemas.js";
 import { validBodyRequest } from "../middlewares/validBodyRequest.js";
 
 const productRoutes = Router();
 
-productRoutes.get("/", getAll);
-productRoutes.get("/:id", getById);
-productRoutes.post("/", validBodyRequest(productSchema), create);
-productRoutes.patch("/:id", updateById);
-productRoutes.delete("/:id", removeById);
+productRoutes.get("/", getAllProducts);
+productRoutes.get("/:id", getProductById);
+productRoutes.post("/", validBodyRequest(productSchema), createProduct);
+productRoutes.patch("/:id", validBodyRequest(productSchema), updateProduct);
+productRoutes.patch("/soft-delete/:id", softDeleteProduct);
+productRoutes.patch("/restore/:id", restoreProduct);
+productRoutes.delete("/:id", deleteProduct);
 
 export default productRoutes;
