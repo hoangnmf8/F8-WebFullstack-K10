@@ -1,7 +1,12 @@
 import bcrypt from "bcrypt";
 import bcryptjs from "bcryptjs";
 import User from "../models/User.js";
+import jwt from "jsonwebtoken";
+import dotenv from "dotenv";
 
+dotenv.config({});
+
+const { SECRET_KEY } = process.env;
 export const register = async (req, res) => {
   /**
    * Bước 1: Kiểm tra email đã đăng ký chưa
@@ -27,7 +32,7 @@ export const register = async (req, res) => {
   // Ma hoa mat khau
   // const hashPassword = await bcrypt.hash(password, 10);
   const hashPassword = bcryptjs.hashSync(password, 10);
-  console.log(hashPassword);
+  // console.log(hashPassword);
 
   // Luu thong tin register vao db
   const user = await User.create({
@@ -52,6 +57,44 @@ export const login = async (req, res) => {
    * Bước 5: Sử dụng redis để lưu refresh token
    * Bước 5: Thông báo.
    */
+
+  const { email, password } = req.body;
+
+  // Bước 1: Kiểm tra email đã đăng ký chưa?
+  const userExist = await User.findOne({ email });
+  if (!userExist) {
+    res.status(404).json({
+      message: "Tai khoan chua dang ky!",
+    });
+  }
+
+  // Bước 2: Từ email đã find được user, compare password xem có khớp không
+  const compareResult = bcryptjs.compareSync(password, userExist.password);
+
+  if (!compareResult) {
+    return res.status(400).json({
+      message: "Mat khau khong dung!",
+    });
+  }
+
+  // Bước 3: Sign JWT (cài đặt jwt)
+
+  const accessToken = jwt.sign(
+    {
+      _id: userExist._id,
+    },
+    SECRET_KEY,
+    { expiresIn: "10d" },
+  );
+
+  console.log(accessToken);
+
+  userExist.password = undefined;
+  return res.status(200).json({
+    message: "Dang nhap thanh cong",
+    accessToken,
+    user: userExist,
+  });
 };
 
 export const refreshToken = async (req, res) => {

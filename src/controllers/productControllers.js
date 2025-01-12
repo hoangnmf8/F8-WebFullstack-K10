@@ -26,28 +26,31 @@ export const createProduct = async (req, res, next) => {
   let { title, price, categoryId, description } = req.body;
 
   if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
-    // Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định "67836a60a83094583683c85e"
+    // Bước 1: Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định "67836a60a83094583683c85e"
     categoryId = "67836a60a83094583683c85e";
   } else {
-    // Nếu Id danh mục hợp lệ, kiểm tra xem danh mục có thực sự còn tồn tại không
+    // Bước 2: Nếu Id danh mục hợp lệ, kiểm tra xem danh mục có thực sự còn tồn tại không
     const category = await Category.findById(categoryId);
     if (!category) {
       return next(new Error("Category not found"));
     }
   }
 
+  // Bước 3: Tạo sản phẩm và lưu vào database
   const product = await Product.create({
     title,
     price,
     categoryId,
     description,
   });
-  // Thêm id sản phẩm vào danh mục
+
+  // Bước 4: Thêm id sản phẩm vào danh mục trong database
   await Category.updateOne(
     { _id: categoryId },
     { $push: { products: product._id } },
   );
 
+  // Bước 5: Trả về sản phẩm vừa tạo và thông báo thành công
   return res.status(201).json(product);
 };
 
