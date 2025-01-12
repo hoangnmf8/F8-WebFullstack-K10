@@ -78,7 +78,6 @@ export const login = async (req, res) => {
   }
 
   // Bước 3: Sign JWT (cài đặt jwt)
-
   const accessToken = jwt.sign(
     {
       _id: userExist._id,
