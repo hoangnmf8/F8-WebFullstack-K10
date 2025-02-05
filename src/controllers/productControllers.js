@@ -1,6 +1,7 @@
 import Category from "../models/Category.js";
 import Product from "../models/Product.js";
 import mongoose from "mongoose";
+import env from "../configs/config.env.js";
 
 export const getAllProducts = async (req, res, next) => {
   const products = await Product.find({
@@ -26,8 +27,8 @@ export const createProduct = async (req, res, next) => {
   let { title, price, categoryId, description } = req.body;
 
   if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
-    // Bước 1: Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định "67836a60a83094583683c85e"
-    categoryId = "67836a60a83094583683c85e";
+    // Bước 1: Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định
+    categoryId = env.CATEGORY_ID_DEFAULT;
   } else {
     // Bước 2: Nếu Id danh mục hợp lệ, kiểm tra xem danh mục có thực sự còn tồn tại không
     const category = await Category.findById(categoryId);
@@ -56,7 +57,7 @@ export const createProduct = async (req, res, next) => {
 
 export const updateProduct = async (req, res, next) => {
   const { id } = req.params;
-  const { title, price, categoryId, description } = req.body;
+  const { categoryId } = req.body;
 
   // Kiểm tra xem categoryId chuẩn bị cập nhật có còn tồn tại không?
   const category = await Category.findById(categoryId);
