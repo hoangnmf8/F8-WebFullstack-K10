@@ -1,3 +1,4 @@
+import env from "../configs/config.env.js";
 import Category from "../models/Category.js";
 
 export const getAllCategories = async (req, res, next) => {
@@ -55,7 +56,7 @@ export const deleteCategory = async (req, res, next) => {
   const { id } = req.params;
 
   // Kiểm tra xem danh mục người dùng định xoá có phải danh mục mặc định không?
-  if (id === "67836a60a83094583683c85e") {
+  if (id === env.CATEGORY_ID_DEFAULT) {
     return next(new Error("Cannot delete default category"));
   }
 
@@ -64,21 +65,19 @@ export const deleteCategory = async (req, res, next) => {
     return next(new Error("Category not found"));
   }
 
-  // Xoá id danh mục khỏi tất cả sản phẩm thuộc danh mục đó và đưa các sản phẩm đó vào danh mục mặc định "67836a60a83094583683c85e"
-
-  // Case 1: Update sản phẩm của danh mục bị xoá vào danh mục mặc định
+  // Cách giải quyết 1: Update sản phẩm của danh mục bị xoá vào danh mục mặc định
   await Product.updateMany(
     { categoryId: id }, // categoryId bị xoá
-    { categoryId: "67836a60a83094583683c85e" },
+    { categoryId: env.CATEGORY_ID_DEFAULT },
   );
 
   // Update danh mục mặc định
   await Category.updateOne(
-    { _id: "67836a60a83094583683c85e" },
+    { _id: env.CATEGORY_ID_DEFAULT },
     { $push: { products: { $each: category.products } } },
   );
 
-  // Case 2: Nếu còn sản phẩm thì cấm xoá danh mục
+  // Cách giải quyết 2: Nếu còn sản phẩm thì cấm xoá danh mục (học viên tự triển khai cách này)
 
   return res.status(200).json(category);
 };
