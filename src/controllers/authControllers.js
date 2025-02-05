@@ -2,11 +2,8 @@ import bcrypt from "bcrypt";
 import bcryptjs from "bcryptjs";
 import User from "../models/User.js";
 import jwt from "jsonwebtoken";
-import dotenv from "dotenv";
+import env from "../configs/config.env.js";
 
-dotenv.config({});
-
-const { SECRET_KEY } = process.env;
 export const register = async (req, res) => {
   /**
    * Bước 1: Kiểm tra email đã đăng ký chưa
@@ -63,7 +60,7 @@ export const login = async (req, res) => {
   // Bước 1: Kiểm tra email đã đăng ký chưa?
   const userExist = await User.findOne({ email });
   if (!userExist) {
-    res.status(404).json({
+    return res.status(404).json({
       message: "Tai khoan chua dang ky!",
     });
   }
@@ -82,8 +79,8 @@ export const login = async (req, res) => {
     {
       _id: userExist._id,
     },
-    SECRET_KEY,
-    { expiresIn: "10d" },
+    env.JWT_SECRET,
+    { expiresIn: env.JWT_EXPIRES_IN },
   );
 
   console.log(accessToken);

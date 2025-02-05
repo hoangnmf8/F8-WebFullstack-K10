@@ -4,10 +4,57 @@ import mongoose from "mongoose";
 import env from "../configs/config.env.js";
 
 export const getAllProducts = async (req, res, next) => {
-  const products = await Product.find({
-    isHidden: false,
-    deletedAt: null,
-  }).populate("categoryId", "title");
+  // const products = await Product.find({
+  //   isHidden: false,
+  //   deletedAt: null,
+  // }).populate("categoryId", "title");
+
+  /**
+   * Khi lấy danh sách sản phẩm kèm biến thể thì dùng cách này:
+   */
+
+  const products = await Product.aggregate([
+    {
+      $match: {
+        isHidden: false,
+        deletedAt: null,
+      },
+    },
+    {
+      $lookup: {
+        from: "categories",
+        localField: "categoryId",
+        foreignField: "_id",
+        as: "category",
+      },
+    },
+    {
+      $unwind: { path: "$category", preserveNullAndEmptyArrays: true },
+    },
+    {
+      $lookup: {
+        from: "productvariants",
+        localField: "_id",
+        foreignField: "productId",
+        as: "variants",
+      },
+    },
+    {
+      $unwind: { path: "$variants", preserveNullAndEmptyArrays: true },
+    },
+    {
+      $group: {
+        _id: "$_id",
+        title: { $first: "$title" },
+        categoryId: { $first: "$categoryId" },
+        description: { $first: "$description" },
+        slug: { $first: "$slug" },
+        totalStock: { $sum: "$variants.stock" },
+        variants: { $push: "$variants" },
+      },
+    },
+  ]);
+
   if (!products) {
     return next(new Error("No products found"));
   }
@@ -16,7 +63,38 @@ export const getAllProducts = async (req, res, next) => {
 
 export const getProductById = async (req, res, next) => {
   const { id } = req.params;
-  const product = await Product.findById(id).populate("categoryId", "title");
+  // const product = await Product.findById(id)
+  //   .populate("categoryId", "title")
+  //   .populate("variants");
+
+  const product = await Product.aggregate([
+    {
+      $match: { _id: new mongoose.Types.ObjectId(id) },
+    },
+    {
+      $lookup: {
+        from: "productvariants",
+        localField: "_id",
+        foreignField: "productId",
+        as: "variants",
+      },
+    },
+    {
+      $unwind: { path: "$variants", preserveNullAndEmptyArrays: true },
+    },
+    {
+      $group: {
+        _id: "$_id",
+        title: { $first: "$title" },
+        categoryId: { $first: "$categoryId" },
+        description: { $first: "$description" },
+        slug: { $first: "$slug" },
+        totalStock: { $sum: "$variants.stock" },
+        variants: { $push: "$variants" },
+      },
+    },
+  ]);
+
   if (!product) {
     return next(new Error("Product not found"));
   }
@@ -25,6 +103,15 @@ export const getProductById = async (req, res, next) => {
 
 export const createProduct = async (req, res, next) => {
   let { title, price, categoryId, description } = req.body;
+
+  /**
+   * Các bước tạo sản phẩm chính.
+   * Bước 1: Kiểm tra xem categoryId có tồn tại không?
+   * Bước 2: Nếu không tồn tại, sử dụng categoryId mặc định.
+   * Bước 3: Tạo sản phẩm và lưu vào database.
+   * Bước 4: Thêm id sản phẩm vào danh mục trong database.
+   * Bước 5: Trả về sản phẩm vừa tạo và thông báo thành công (Lúc này sản phẩm chưa có biến thể).
+   */
 
   if (!categoryId || !mongoose.Types.ObjectId.isValid(categoryId)) {
     // Bước 1: Nếu Id danh mục lỗi hoặc không có, sử dụng id danh mục mặc định
@@ -123,6 +210,7 @@ export const restoreProduct = async (req, res, next) => {
     { deletedAt: null, isHidden: false },
     { new: true },
   );
+
   if (!product) {
     return next(new Error("Product not found"));
   }
