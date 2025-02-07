@@ -4,7 +4,6 @@ import {
   deleteProduct,
   getAllProducts,
   getProductById,
-  restoreProduct,
   softDeleteProduct,
   updateProduct,
 } from "../controllers/productControllers.js";
@@ -24,7 +23,6 @@ productRoutes.post(
 );
 productRoutes.patch("/:id", validBodyRequest(productSchema), updateProduct);
 productRoutes.patch("/soft-delete/:id", softDeleteProduct);
-productRoutes.patch("/restore/:id", restoreProduct);
 productRoutes.delete("/:id", deleteProduct);
 
 export default productRoutes;

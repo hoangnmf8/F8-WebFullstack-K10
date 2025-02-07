@@ -1,0 +1,30 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "title": "san pham a",
+      "description": "mo ta san pham a",
+      "variants": [
+        {
+          "attribute": "918287332jjhdhdy37dh",
+          "value": "82732878dndjdnhjdnjkjs",
+          "stock": 10,
+          "price": 100
+        },
+        {
+          "attribute": "918287332jjhdhdy37dh",
+          "value": "82732878dndjdnhjdnjkjs",
+          "stock": 10,
+          "price": 100
+        },
+        {
+          "attribute": "918287332jjhdhdy37dh",
+          "value": "82732878dndjdnhjdnjkjs",
+          "stock": 10,
+          "price": 100
+        }
+      ]
+    }
+  ],
+  "product_variants": []
+}

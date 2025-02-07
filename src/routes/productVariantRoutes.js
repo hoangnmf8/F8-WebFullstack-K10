@@ -1,12 +1,12 @@
 import { Router } from "express";
 import {
-  createVariantProduct,
-  getVariantsByProduct,
+  addVariants,
+  getAllVariants,
 } from "../controllers/productVariantControllers.js";
 
-const productVariantRoutes = Router();
+const productVariantRouter = Router();
 
-productVariantRoutes.post("/", createVariantProduct);
-productVariantRoutes.get("/:productId", getVariantsByProduct);
+productVariantRouter.get("/", getAllVariants);
+productVariantRouter.post("/", addVariants);
 
-export default productVariantRoutes;
+export default productVariantRouter;

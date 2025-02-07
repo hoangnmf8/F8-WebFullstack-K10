@@ -1,10 +1,5 @@
 import slugify from "slugify";
 
-/**
- * Middleware để tự động tạo slug cho các model.
- * @param {String} sourceField - Field ban đầu để tạo slug (ví dụ: 'name').
- * @param {String} targetField - Field sẽ lưu slug (ví dụ: 'slug').
- */
 const slugMiddleware = (sourceField, targetField) => {
   return function (schema) {
     schema.pre("save", async function (next) {
