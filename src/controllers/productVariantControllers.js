@@ -20,13 +20,11 @@ export const addVariants = async (req, res) => {
     product.attributes.push(...newVariants.map((variant) => variant._id));
     await product.save();
 
-    return res
-      .status(201)
-      .json({
-        message: "Variants added successfully",
-        variants: newVariants,
-        product,
-      });
+    return res.status(201).json({
+      message: "Variants added successfully",
+      variants: newVariants,
+      product,
+    });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }

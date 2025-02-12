@@ -22,7 +22,7 @@ const productSchema = new mongoose.Schema(
           ref: "Attribute",
           required: true,
         },
-        values: [
+        valueId: [
           {
             type: mongoose.Schema.Types.ObjectId,
             ref: "AttributeValue",
@@ -34,23 +34,6 @@ const productSchema = new mongoose.Schema(
   },
   { timestamps: true, versionKey: false },
 );
-
-const products = {
-  id: 123,
-  title: "san pham a",
-  description: "mo ta san pham a",
-  price: 100,
-  stock: 100,
-  categoryId: 1,
-  rate: 4.5,
-  soldCount: 100,
-  isHidden: false,
-  deletedAt: null,
-  attributes: [
-    { attributeId: 1, values: [1, 2, 3] },
-    { attributeId: 2, values: [1, 2, 3] },
-  ],
-};
 
 const Product = mongoose.model("Product", productSchema);
 export default Product;
