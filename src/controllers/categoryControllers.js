@@ -21,6 +21,8 @@ export const getCategoryById = async (req, res, next) => {
 export const createCategory = async (req, res, next) => {
   const { title, description } = req.body;
   const category = new Category({ title, description });
+  console.log(category);
+  category.alo = "hello world";
   await category.save();
   return res.status(201).json(category);
 };
